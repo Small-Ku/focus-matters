@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Focus matters
 @namespace      https://github.com/Small-Ku/focus-matters
-@version        0.1.3
+@version        0.1.4
 @description    A simple user css for Matters
 @author         Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -82,10 +82,9 @@
 					transition-time-function cubic-bezier(0.4, 0.0, 1, 1)
     
 		// Fix z-index of poped cards when searching
-    .tippy-popper
-        z-index 200
-    
-				
+	.tippy-popper
+		z-index 200
+
 @-moz-document regexp("https:\/\/matters\.news\/@.+\/((?!comments|followe[re]s).+)")
 	@media (min-width: 1280px)
 		// Hide nav and aside with revealing with hover
