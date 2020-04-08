@@ -1,6 +1,6 @@
 # Focus Matters
 
-[![直接以Stylus安裝](https://img.shields.io/static/v1?label=Install%20directly%20with&message=Stylus&color=00adad&style=flat-square)](https://raw.githubusercontent.com/Small-Ku/focus-matters/master/focus-matters.user.css)
+[![直接以Stylus安裝](https://img.shields.io/static/v1?label=Install%20directly%20with&message=Stylus&color=00adad&style=flat-square)](https://raw.githubusercontent.com/Small-Ku/focus-matters/master/focus-matters.user.styl)
 [![授權: MIT](https://img.shields.io/static/v1?label=License&message=MIT&color=yellow&style=flat-square)](https://opensource.org/licenses/MIT)
 
 Focus Matters 是志在改善桌面端 [Matters](https://matters.news/) 的使用者樣式。
@@ -16,7 +16,7 @@ Focus Matters 是志在改善桌面端 [Matters](https://matters.news/) 的使�
 
 先安裝 [Stylus](https://github.com/openstyles/stylus)。
 
-然後[按此安裝使用者樣式](https://raw.githubusercontent.com/Small-Ku/focus-matters/master/focus-matters.user.css)。
+然後[按此安裝使用者樣式](https://raw.githubusercontent.com/Small-Ku/focus-matters/master/focus-matters.user.styl)。
 
 ## 使用
 
