@@ -1,0 +1,119 @@
+/* ==UserStyle==
+@name           Focus matters
+@namespace      https://github.com/Small-Ku/focus-matters
+@version        0.1.0
+@description    A simple user css for Matters
+@author         Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
+@license		MIT
+@homepageURL	https://github.com/Small-Ku/focus-matters
+@supportURL		https://github.com/Small-Ku/focus-matters/issues
+@updateURL 		https://raw.githubusercontent.com/Small-Ku/focus-matters/master/focus-matters.user.css
+@preprocessor   stylus
+==/UserStyle== */
+@-moz-document domain("matters.news")
+	// Optimize padding of round text elements with icon
+	.tag
+		padding 0 0.5rem 0 0.25rem!important
+	.side-nav .hasIcon.text-right .text
+		padding 0 0.25rem 0 0.5rem!important
+	.side-nav .hasIcon.text-right.white .text
+		padding 0 0rem 0 0.5rem!important
+	/*.side-nav .hasIcon.text-right, .tag
+		& .text
+			padding-right 0.125em*/
+
+	// Optimize switch with transform instead of box-shadow and left/right			
+	.switch input
+		& + span
+			overflow hidden
+			&:before, &:after
+				transition transform .1s cubic-bezier(0.4, 0.0, 0.2, 1)!important
+			&:before
+				display block
+				position absolute
+				left 0
+				right 0
+				top 0
+				bottom 0
+				width 100%
+				height 100%
+				z-index 0
+				content ""
+				background-color rgb(13, 103, 99)
+				transform translateX(-2.3rem)
+				border-radius .75rem
+			&:after
+				z-index 1
+		&:checked + span
+			box-shadow none!important
+			&:before
+				opacity 1
+				transform translateX(0)
+			&:after 
+				right auto !important
+				transform translateX(1.125rem) !important
+	
+	// Make article wider
+	@media (min-width: 1280px)
+		#__next
+			& > main
+				-webkit-flex-basis 100%
+				-ms-flex-preferred-size 100%
+				flex-basis 100%
+				max-width 100%
+				& > article
+					max-width calc(100% - 25rem) !important
+					flex-basis calc(100% - 25rem) !important
+					padding 0 !important
+					margin-right 2rem !important
+					//.image img //Original max size in Matters
+					//	max-width 687.2953px
+				& > nav
+					max-width 8rem
+					margin 0 0 0 2rem
+				& > aside
+					max-width 12rem
+					flex-basis 12rem
+					padding-right 1rem !important
+				& > aside, & > nav
+					opacity 1
+					transform translateX(0)
+					transition opacity .25s, transform .3s
+					transition-time-function cubic-bezier(0.4, 0.0, 1, 1)
+				
+@-moz-document regexp("https:\\/\\/matters\\.news\\/@.+\\/((?!comments).+)")
+	@media (min-width: 1280px)
+		// Hide nav and aside with revealing with hover
+		#__next
+			& > main
+				& > aside, & > nav
+					opacity 0
+					transition opacity .25s
+					transition-time-function cubic-bezier(0.4, 0.0, 1, 1)
+					&:hover
+						opacity 1
+						transition opacity .3s
+						transition-time-function cubic-bezier(0.0, 0.0, 0.2, 1)
+				& > aside
+					max-width 16rem
+					flex-basis 16rem
+					position fixed
+					right 0
+					padding 2rem 1rem
+					height 100%
+					z-index 1000
+					background #fff
+					transform translateX(40%) !important
+					transition opacity .25s, transform .25s
+					border-left 1px solid #EBEBEB
+					border-left 1px solid rgba(0,0,0,0.08)
+					& > *
+						width 14rem
+						flex-basis 14rem
+					&:hover
+						transform translateX(0) !important
+						transition opacity .3s, transform .3s
+				& > article
+					max-width calc(100% - 20rem) !important
+					flex-basis calc(100% - 20rem) !important
+			   
