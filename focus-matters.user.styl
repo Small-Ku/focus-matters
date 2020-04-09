@@ -10,7 +10,7 @@
 @updateURL 		https://raw.githubusercontent.com/Small-Ku/focus-matters/master/focus-matters.user.styl
 @preprocessor   stylus
 
-@var			select   layoutChange    "擴大佈局" [
+@var			select   layoutChange    "擴大內容" [
 					"focusMatters:專注內容",
 					"mockOriginal:仿製原版",
 					"off:關閉"
@@ -19,7 +19,10 @@
 ==/UserStyle== */
 
 @-moz-document domain("matters.news")
+	// 視覺優化
+	// Optimize appearance
 	if lookOptimize
+		// 優化圓角元素的視覺平衡
 		// Optimize padding of round text elements with icon
 		.tag
 			padding 0 0.5rem 0 0.25rem!important
@@ -27,11 +30,9 @@
 			padding 0 0.25rem 0 0.5rem!important
 		.side-nav .hasIcon.text-right.white .text
 			padding 0 0rem 0 0.5rem!important
-		/*.side-nav .hasIcon.text-right, .tag
-			& .text
-				padding-right 0.125em*/
 
-		// Optimize switch with transform instead of box-shadow and left/right			
+		// 爲開關按鈕換更好的動畫
+		// Optimize switch with transform instead of box-shadow and left/right
 		.switch input
 			& + span
 				overflow hidden
@@ -61,9 +62,10 @@
 				&:after 
 					right auto !important
 					transform translateX(1.125rem) !important
-	
+
+	// 擴大內容
+	// Extend content in the web layout
 	if layoutChange != off
-		// Make article wider
 		@media (min-width: 1280px)
 			#__next
 				& > main
@@ -71,6 +73,8 @@
 					-ms-flex-preferred-size 100%
 					flex-basis 100%
 					max-width 100%
+					// 模仿原版佈局
+					// Mock original layout
 					if layoutChange == mockOriginal
 						& > article
 							max-width calc(100% - 520px) !important
@@ -81,14 +85,14 @@
 						& > aside
 							max-width 272px !important
 							padding-right 72px !important
+					// 自創佈局
+					// Focus Matters style
 					if layoutChange == focusMatters
 						& > article
 							max-width calc(100% - 25rem) !important
 							flex-basis calc(100% - 25rem) !important
 							padding 0 !important
 							margin-right 2rem !important
-							//.image img //Original max size in Matters
-							//	max-width 687.2953px
 						& > nav
 							max-width 8rem
 							margin 0 0 0 2rem
@@ -101,45 +105,50 @@
 							transform translateX(0)
 							transition opacity .25s, transform .3s
 							transition-time-function cubic-bezier(0.4, 0.0, 1, 1)
-	
-			// Fix z-index of poped cards when searching
+
+		// 修復自創佈局中的卡片層級
+		// Fix z-index of poped cards when searching
 		.tippy-popper
 			z-index 200 !important
 
 @-moz-document regexp("https:\/\/matters\.news\/@.+\/((?!comments|followe[re]s).+)")
+	// 自創佈局
+	// Focus Matters style
 	if layoutChange == focusMatters
 		@media (min-width: 1280px)
-			// Hide nav and aside with revealing with hover
-			#__next
-				& > main
-					& > aside, & > nav
-						opacity 0
-						transition opacity .25s
-						transition-time-function cubic-bezier(0.4, 0.0, 1, 1)
-						&:hover, &:focus-within
-							opacity 1
-							transition opacity .3s
-							transition-time-function cubic-bezier(0.0, 0.0, 0.2, 1)
-					& > aside
-						max-width 16rem
-						flex-basis 16rem
-						position fixed
-						right 0
-						padding 2rem 1rem
-						height 100%
-						z-index 150 !important
-						background #fff
-						transform translateX(40%) !important
-						transition opacity .25s, transform .25s
-						border-left 1px solid #EBEBEB
-						border-left 1px solid rgba(0,0,0,0.08)
-						& > *
-							width 14rem
-							flex-basis 14rem
-						&:hover, &:focus-within
-							transform translateX(0) !important
-							transition opacity .3s, transform .3s
-					& > article
-						max-width calc(100% - 20rem) !important
-						flex-basis calc(100% - 20rem) !important
-			   
+			#__next > main
+				// 隱藏導航欄與側邊欄，滑鼠置於空白位置時浮現
+				// Hide nav and aside with revealing with hover
+				& > aside, & > nav
+					opacity 0
+					transition opacity .25s
+					transition-time-function cubic-bezier(0.4, 0.0, 1, 1)
+					&:hover, &:focus-within
+						opacity 1
+						transition opacity .3s
+						transition-time-function cubic-bezier(0.0, 0.0, 0.2, 1)
+				// 內縮右移側邊欄
+				// Hide aside in the right
+				& > aside
+					max-width 16rem
+					flex-basis 16rem
+					position fixed
+					right 0
+					padding 2rem 1rem
+					height 100%
+					z-index 150 !important
+					background #fff
+					transform translateX(40%) !important
+					transition opacity .25s, transform .25s
+					border-left 1px solid rgba(0,0,0,0.08)
+					& > *
+						width 14rem
+						flex-basis 14rem
+					&:hover, &:focus-within
+						transform translateX(0) !important
+						transition opacity .3s, transform .3s
+				// 擴大內容區域
+				// Extend content area more
+				& > article
+					max-width calc(100% - 20rem) !important
+					flex-basis calc(100% - 20rem) !important
