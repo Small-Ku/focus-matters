@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Focus matters
 @namespace      https://github.com/Small-Ku/focus-matters
-@version        0.1.4
+@version        0.1.5
 @description    A simple user css for Matters
 @author         Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -83,7 +83,7 @@
     
 		// Fix z-index of poped cards when searching
 	.tippy-popper
-		z-index 200
+		z-index 200 !important
 
 @-moz-document regexp("https:\/\/matters\.news\/@.+\/((?!comments|followe[re]s).+)")
 	@media (min-width: 1280px)
@@ -105,7 +105,7 @@
 					right 0
 					padding 2rem 1rem
 					height 100%
-					z-index 100
+					z-index 150 !important
 					background #fff
 					transform translateX(40%) !important
 					transition opacity .25s, transform .25s
