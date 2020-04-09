@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Focus matters
 @namespace      https://github.com/Small-Ku/focus-matters
-@version        0.2.0-dev+002
+@version        0.2.0-dev+003
 @description    A simple user css for Matters
 @author         Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -12,6 +12,7 @@
 
 @var			select   layoutChange    "擴大佈局" [
 					"focusMatters:專注內容",
+					"mockOriginal:仿製原版",
 					"off:關閉"
 				]
 @var			checkbox lookOptimize    "視覺優化"  1
@@ -70,6 +71,16 @@
 					-ms-flex-preferred-size 100%
 					flex-basis 100%
 					max-width 100%
+					if layoutChange == mockOriginal
+						& > article
+							max-width calc(100% - 520px) !important
+							flex-basis calc(100% - 520px) !important
+						& > nav
+							max-width 168px !important
+							padding-left 72px !important
+						& > aside
+							max-width 272px !important
+							padding-right 72px !important
 					if layoutChange == focusMatters
 						& > article
 							max-width calc(100% - 25rem) !important
