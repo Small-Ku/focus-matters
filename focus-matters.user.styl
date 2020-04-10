@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+014
+@version		0.2.0-dev+015
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -723,6 +723,52 @@ red-color = #b00020
 	if darkModeLook
 		article ul li + li
 			border-top-color bg-color !important
+
+@-moz-document regexp("https:\/\/matters\.news\/about\/?")
+	if darkModeLook
+		.features
+			background linear-gradient( 90deg, second-color-dark 50%, transparent 50% ) no-repeat !important
+			.feature-section
+				.intro p
+					color second-color-light !important
+				img
+					filter invert(90%) hue-rotate(180deg) brightness(110%)
+				
+@-moz-document regexp("https:\/\/matters\.news\/migration\/?")
+	if darkModeLook
+		#steps .step img, .intro-wrap, .banner
+			color rgba(#000, .87)
+			filter invert(92.9%) hue-rotate(185deg) saturate(125%)
+		@media (min-width: 1280px)
+			.intro-wrap, .banner
+				color rgba(text-color, .87)
+				filter none
+			.intro-wrap
+				background-image url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' height='800' viewBox='0 0 1440 800'%3E%3Cmask id='a' maskUnits='userSpaceOnUse' x='0' y='0' width='1440' height='800'%3E%3Cpath fill='%23fff' d='M0 0h1440v800H0z'/%3E%3C/mask%3E%3Cg mask='url(%23a)'%3E%3Cpath stroke='%2392C7B8' stroke-width='.5' d='M1297.8 304.8l243.7-177'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1292.5 319a9.5 9.5 0 100-19 9.5 9.5 0 000 19z' fill='url(%23paint0_linear)'/%3E%3Cpath clip-rule='evenodd' d='M273 266a480 480 0 100-960 480 480 0 000 960z' stroke='%23C0A46B' stroke-width='.5'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M574.5 173a14.5 14.5 0 100-29 14.5 14.5 0 000 29z' fill='%23F2FAF8'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M574.5 173a14.5 14.5 0 100-29 14.5 14.5 0 000 29z' fill='url(%23paint1_linear)'/%3E%3Cpath clip-rule='evenodd' d='M574.5 173a14.5 14.5 0 100-29 14.5 14.5 0 000 29z' stroke='%23C0A46B' stroke-dasharray='4 4'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M259 343a100 100 0 100-200 100 100 0 000 200z' fill='%23F2FAF8'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M259 343a100 100 0 100-200 100 100 0 000 200z' fill='url(%23paint2_linear)'/%3E%3Cpath clip-rule='evenodd' d='M259 343a100 100 0 100-200 100 100 0 000 200z' stroke='%23C0A46B' stroke-width='2' stroke-dasharray='8 8'/%3E%3Cpath clip-rule='evenodd' d='M988 1522a480 480 0 100-960 480 480 0 000 960z' stroke='%2392C7B8' stroke-width='.5'/%3E%3Cpath clip-rule='evenodd' d='M988.5 1385a342.5 342.5 0 100-685 342.5 342.5 0 000 685z' stroke='%2392C7B8' stroke-width='.5'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1069 666a100 100 0 100-200 100 100 0 000 200z' fill='%2387B9AB'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1069 666a100 100 0 100-200 100 100 0 000 200z' fill='url(%23paint3_linear)'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M669.5 695a14.5 14.5 0 100-29 14.5 14.5 0 000 29z' fill='url(%23paint4_linear)'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M819 592.7c.1.3.3 1-.6 1.8-3.5 3.2-10.7 7.1-14.8 13.1 0 .1-.4.7-3.5 2.6l-7-17.2c3.7-.7 4.3-.6 4.4-.5 7.1 1.5 15-.7 19.8-.8 1.2 0 1.5.6 1.7 1z' fill='%23359177'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M819 592.7c.1.3.3 1-.6 1.8-3.5 3.2-10.7 7.1-14.8 13.1 0 .1-.4.7-3.5 2.6l-7-17.2c3.7-.7 4.3-.6 4.4-.5 7.1 1.5 15-.7 19.8-.8 1.2 0 1.5.6 1.7 1z' fill='url(%23paint5_linear)'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M819 592.7c.1.3.3 1-.6 1.8-3.5 3.2-10.7 7.1-14.8 13.1 0 .1-.4.7-3.5 2.6l-7-17.2c3.7-.7 4.3-.6 4.4-.5 7.1 1.5 15-.7 19.8-.8 1.2 0 1.5.6 1.7 1z' fill='url(%23paint6_linear)'/%3E%3Cpath stroke='%23C0A46B' stroke-width='.5' d='M-78.1 860l436.7-317.4'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M376.5 528.2c.3.3.6.9 0 2-2.5 4-8.4 9.7-10.7 16.5 0 .2-.3.8-2.8 3.5l-11.2-14.7c3.2-1.7 3.9-1.7 4-1.7 7.2-.5 14.3-4.7 18.8-6 1.2-.4 1.7 0 2 .4z' fill='url(%23paint7_linear)'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear' x1='1306.8' y1='307.6' x2='1292.6' y2='296.4' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2379B1A6'/%3E%3Cstop offset='1' stop-color='%23D7EAE1'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear' x1='558.8' y1='158.3' x2='575.5' y2='175.7' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23F4E2BC' stop-opacity='.2'/%3E%3Cstop offset='1' stop-color='%23B17F18' stop-opacity='.2'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint2_linear' x1='150.4' y1='241.7' x2='266' y2='361.7' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23F4E2BC' stop-opacity='.2'/%3E%3Cstop offset='1' stop-color='%23B17F18' stop-opacity='.2'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint3_linear' x1='946.5' y1='577.5' x2='1095.1' y2='693.4' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23D7EAE1'/%3E%3Cstop offset='1' stop-color='%2379B1A6'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint4_linear' x1='691.2' y1='677.6' x2='669.7' y2='660.5' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2379B1A6'/%3E%3Cstop offset='1' stop-color='%23D7EAE1'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint5_linear' x1='818.2' y1='592.9' x2='797.4' y2='584' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2379B1A6'/%3E%3Cstop offset='1' stop-color='%230D6763'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint6_linear' x1='802.3' y1='590.2' x2='803.4' y2='615.5' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2379B1A6'/%3E%3Cstop offset='1' stop-color='%230D6763'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint7_linear' x1='350' y1='536' x2='362.2' y2='552.6' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23EFDAAF'/%3E%3Cstop offset='1' stop-color='%23BF9F5E'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E") !important
+			.banner
+				background-image url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 1080 172'%3E%3Cmask id='a' maskUnits='userSpaceOnUse' x='0' y='0' width='1080' height='172'%3E%3Crect width='1080' height='172' rx='4' fill='%23FAF7F0'/%3E%3C/mask%3E%3Cg mask='url(%23a)' clip-rule='evenodd'%3E%3Cpath fill-rule='evenodd' d='M676 86l-37 56-19-29 56-27z' fill='%23F0F0F0'/%3E%3Cpath fill-rule='evenodd' d='M623 118l-3-5-7 8 10-3z' fill='%239E8248'/%3E%3Cpath fill-rule='evenodd' d='M596 81l80 5-63 17-17-22z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' d='M676 86l-63 17v18l7-8 56-27z' fill='%23BFA267'/%3E%3Cpath d='M1024 918a413 413 0 100-826 413 413 0 000 826z' stroke='%2392C7B8' stroke-width='.5'/%3E%3Cpath fill-rule='evenodd' d='M1013 235a109 109 0 100-218 109 109 0 000 218z' fill='%23437D6D'/%3E%3Cpath fill-rule='evenodd' d='M1013 235a109 109 0 100-218 109 109 0 000 218z' fill='%234E8764'/%3E%3Cpath fill-rule='evenodd' d='M1013 235a109 109 0 100-218 109 109 0 000 218z' fill='%233D725E'/%3E%3Cpath fill-rule='evenodd' d='M1013 235a109 109 0 100-218 109 109 0 000 218z' fill='url(%23paint0_linear)'/%3E%3Cpath fill-rule='evenodd' d='M800 43a56 56 0 100-112 56 56 0 000 112z' fill='url(%23paint1_linear)'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear' x1='1166.6' y1='145.6' x2='1028.8' y2='-17.3' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%230D6763'/%3E%3Cstop offset='1' stop-color='%23D7EAE1'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear' x1='755' y1='-1' x2='834.5' y2='7.5' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%2379B1A6'/%3E%3Cstop offset='1' stop-color='%23D7EAE1'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E") !important
+				.title
+					color primary-color-light !important
+
+@-moz-document regexp("https:\/\/matters\.news\/(about|migration)\/?")
+	if darkModeLook
+		.intro-wrap, .slogan, .banner
+			background-color primary-color-dark !important
+				
+		.reports .item a
+			background-color lighten(bg-color, 5%) !important
+			&:hover, &:focus
+				background-color mix(bg-color, primary-color-light, 87%) !important
+				
+		footer
+			background-color lighten(bg-color, 5%) !important
+			input[type="email"]
+				color  rgba(text-color, 0.87) !important
+				border-color lighten(lighten(bg-color, 4%), 7%) !important
+				background-color lighten(bg-color, 4%) !important
+				&::-webkit-input-placeholder,
+				&::placeholder
+					color rgba(text-color, .6)
 
 @-moz-document regexp("https:\/\/matters\.news\/@.+\/((?!comments|followe[re]s).+)")
 	// 自創佈局
