@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+011
+@version		0.2.0-dev+012
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -714,6 +714,11 @@ red-color = #b00020
 					fill rgba(text-color, 0.87) !important
 				.ql-stroke, .ql-stroke-miter
 					stroke rgba(text-color, 0.87) !important
+
+@-moz-document url("https://matters.news/help")
+	if darkModeLook
+		article ul li + li
+			border-top-color bg-color !important
 
 @-moz-document regexp("https:\/\/matters\.news\/@.+\/((?!comments|followe[re]s).+)")
 	// 自創佈局
