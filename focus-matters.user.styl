@@ -488,12 +488,11 @@ red-color = #b00020
 				&:hover, &:focus
 					background-color rgba(text-color, .07) !important
 
-		.editor-title
-			input
-				background-color rgba(0,0,0,0)
-				&::-webkit-input-placeholder,
-				&::placeholder
-					color rgba(text-color, .6) !important
+		.editor-title input
+			background-color rgba(0,0,0,0)
+			&::-webkit-input-placeholder,
+			&::placeholder
+				color rgba(text-color, .6) !important
 
 		.u-content, #editor-article-container .ql-editor 
 			figure
@@ -607,7 +606,7 @@ red-color = #b00020
 					article
 						&::before
 							background-color rgba(text-color, 0.08)
-
+		
 		.keepAside ~ aside
 			section
 				border-bottom-color rgba(text-color, 0.08)
@@ -636,15 +635,19 @@ red-color = #b00020
 							color rgba(text-color, 0.6) !important
 					.intro
 						color rgba(text-color, 0.6) !important
-					input[type="search"]
-						background-color rgba(text-color, 0.04) !important
-						border-bottom-color rgba(text-color, 0.6) !important
-						&::-webkit-input-placeholder,
-						&::placeholder
-							color rgba(text-color, 0.6) !important
-						&:focus, &.focus
-							background-color rgba(text-color, 0.1) !important
-							border-bottom-color primary-color !important
+
+		.dialog .container form input, .dialog .container form textarea, input[type="search"]
+			background-color rgba(text-color, 0.04) !important
+			color rgba(text-color, 0.6) !important
+			&:hover
+				background-color rgba(text-color, 0.1) !important
+				color rgba(text-color, 0.87) !important
+			&:focus
+				background-color rgba(text-color, 0.12) !important
+				color rgba(text-color, 0.87) !important
+			&::-webkit-input-placeholder,
+			&::placeholder
+				color rgba(text-color, 0.6) !important
 
 		.ql-editor.ql-blank::before
 			color rgba(text-color, 0.6) !important
@@ -697,20 +700,8 @@ red-color = #b00020
 			> header
 				box-shadow rgba(text-color, 0.08) 0px 1px 0px 0px !important
 			form
-				background-color rgba(0,0,0,0) !important
-				input, textarea
-					background-color rgba(text-color, 0.04) !important
-					color rgba(text-color, 0.6) !important
-					&:hover
-						background-color rgba(text-color, 0.1) !important
-						color rgba(text-color, 0.87) !important
-					&:focus
-						background-color rgba(text-color, 0.12) !important
-						color rgba(text-color, 0.87) !important
-					&::-webkit-input-placeholder,
-					&::placeholder
-						color rgba(text-color, 0.6) !important
-
+				background-color rgba(0,0,0,0) !important 
+				
 		@media (pointer: coarse)
 			.ql-bubble .ql-toolbar .ql-bubble .ql-toolbar button:hover:not(.ql-active)
 				color rgba(text-color, 0.87) !important
