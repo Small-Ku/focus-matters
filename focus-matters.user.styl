@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Focus matters
 @namespace      https://github.com/Small-Ku/focus-matters
-@version        0.2.0-dev+006
+@version        0.2.0-dev+007
 @description    A simple user css for Matters
 @author         Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -545,8 +545,34 @@ second-color-text = #000
 		.frequent-searches
 			.key
 				color primary-color-light !important
+		
 		.aggregate-section
 			background-color bg-color !important
+		
+		article .user-profile
+			&, & ~ div .list
+				footer
+					color rgba(text-color, .6) !important
+					.count
+						color rgba(text-color, .87) !important
+			~ nav
+				border-bottom-color rgba(text-color, 0.08) !important
+				&::after
+					background-image none !important
+				li
+					color rgba(text-color, .6) !important
+					&:hover, &:focus, &[aria-selected="true"]
+						color rgba(text-color, .87) !important
+					&[aria-selected="true"] .content
+						border-bottom-color rgba(text-color, .87) !important
+			~ .info
+				.num
+					color rgba(text-color, .87) !important
+				&, .username
+					color rgba(text-color, .6) !important
+				.description
+					color rgba(text-color, .6) !important
+
 
 @-moz-document regexp("https:\/\/matters\.news\/@.+\/((?!comments|followe[re]s).+)")
 	// 自創佈局
