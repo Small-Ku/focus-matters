@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+012
+@version		0.2.0-dev+013
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -559,6 +559,13 @@ red-color = #b00020
 		
 		.aggregate-section
 			background-color bg-color !important
+			
+		li[role="tab"]
+			color rgba(text-color, .6) !important
+			&:hover, &:focus, &[aria-selected="true"]
+				color rgba(text-color, .87) !important
+			&[aria-selected="true"] .content
+				border-bottom-color rgba(text-color, .87) !important
 		
 		article .user-profile
 			&, & ~ div .list
@@ -568,12 +575,6 @@ red-color = #b00020
 						color rgba(text-color, .87) !important
 			~ nav
 				border-bottom-color rgba(text-color, 0.08) !important
-				li
-					color rgba(text-color, .6) !important
-					&:hover, &:focus, &[aria-selected="true"]
-						color rgba(text-color, .87) !important
-					&[aria-selected="true"] .content
-						border-bottom-color rgba(text-color, .87) !important
 			~ .info
 				.num
 					color rgba(text-color, .87) !important
