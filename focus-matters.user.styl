@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+009
+@version		0.2.0-dev+011
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -29,6 +29,7 @@ second-color = #c0a46b
 second-color-light = #f4d59a
 second-color-dark = #8e753f
 second-color-text = #000
+red-color = #b00020
 
 @-moz-document domain("matters.news")
 	// 視覺優化
@@ -308,25 +309,30 @@ second-color-text = #000
 
 		.border-white
 			.hotarea
-				border-color rgba(#fff, 87%)
+				border-color rgba(#fff, 87%) !important
 
 			// Red
 		.red
-			color rgb(200, 92, 65)
+			color red-color !important
 
 		.text-red
-			color rgb(200, 92, 65)
+			color red-color !important
 
 		.bg-red
 			.hotarea
-				background-color rgb(200, 92, 65)
+				background-color red-color !important
+			&:hover, &:focus 
+				.hotarea
+					background-color lighten(red-color, 4%) !important
 
-		.bg-active-red:hover .hotarea, .bg-active-red:focus .hotarea
-			background-color rgb(200, 92, 65)
+		.bg-active-red
+			&:hover, &:focus 
+				.hotarea
+					background-color red-color !important
 
 		.border-red
 			.hotarea
-				border-color rgb(200, 92, 65)
+				border-color red-color !important
 
 		// Custom components in Matters
 
@@ -672,15 +678,34 @@ second-color-text = #000
 						color primary-color-light !important
 						.ql-fill, .ql-stroke.ql-fill
 							color primary-color-light !important
-		
+
 		#editor-article-container .spinner
 			stroke rgba(text-color, 0.38)
-			
+
 		.toast.green
 			background-color primary-color-dark !important
-			
+
 		.embed-clipboard
 			background-color rgba(0,0,0,0) !important
+
+		.dialog .container
+			background-color lighten(bg-color, 5%) !important
+			> header
+				box-shadow rgba(text-color, 0.08) 0px 1px 0px 0px !important
+			form
+				background-color rgba(0,0,0,0) !important
+				input, textarea
+					background-color rgba(text-color, 0.04) !important
+					color rgba(text-color, 0.6) !important
+					&:hover
+						background-color rgba(text-color, 0.1) !important
+						color rgba(text-color, 0.87) !important
+					&:focus
+						background-color rgba(text-color, 0.12) !important
+						color rgba(text-color, 0.87) !important
+					&::-webkit-input-placeholder,
+					&::placeholder
+						color rgba(text-color, 0.6) !important
 
 		@media (pointer: coarse)
 			.ql-bubble .ql-toolbar .ql-bubble .ql-toolbar button:hover:not(.ql-active)
