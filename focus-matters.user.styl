@@ -562,8 +562,6 @@ second-color-text = #000
 						color rgba(text-color, .87) !important
 			~ nav
 				border-bottom-color rgba(text-color, 0.08) !important
-				&::after
-					background-image none !important
 				li
 					color rgba(text-color, .6) !important
 					&:hover, &:focus, &[aria-selected="true"]
@@ -577,6 +575,9 @@ second-color-text = #000
 					color rgba(text-color, .6) !important
 				.description
 					color rgba(text-color, .6) !important
+		
+		article nav::after
+			background-image none !important
 		
 		.block
 			border-top-color rgba(text-color, 0.08) !important
