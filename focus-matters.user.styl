@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+019
+@version		0.2.0-dev+020
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -43,6 +43,8 @@ red-color = #b00020
 			padding 0 0.25rem 0 0.5rem!important
 		.side-nav .hasIcon.text-right.white .text
 			padding 0 0rem 0 0.5rem!important
+		.text-icon .text
+			transform translateY(-0.06rem) !important
 
 		// 優化標籤的視覺平衡與統一
 		// Optimize visual balances and consistency of tags
@@ -50,9 +52,9 @@ red-color = #b00020
 			padding 0 0.3rem 0 0.5rem!important
 			border-radius 0.75rem
 			> *
-				transform translateY(-1px)
+				transform translateY(-0.06rem) !important
 		.search-tag-input
-			transform translateY(1px)
+			transform translateY(-0.06rem) !important
 
 		// 爲開關按鈕換更好的動畫
 		// Optimize switch with transform instead of box-shadow and left/right
