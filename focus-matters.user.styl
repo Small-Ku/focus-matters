@@ -1,22 +1,22 @@
 /* ==UserStyle==
-@name           Focus matters
-@namespace      https://github.com/Small-Ku/focus-matters
-@version        0.2.0-dev+007
-@description    A simple user css for Matters
-@author         Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
+@name			Focus matters
+@namespace		https://github.com/Small-Ku/focus-matters
+@version		0.2.0-dev+008
+@description	A simple user css for Matters
+@author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
 @homepageURL	https://github.com/Small-Ku/focus-matters
 @supportURL		https://github.com/Small-Ku/focus-matters/issues
-@updateURL 		https://raw.githubusercontent.com/Small-Ku/focus-matters/master/focus-matters.user.styl
-@preprocessor   stylus
+@updateURL		https://raw.githubusercontent.com/Small-Ku/focus-matters/master/focus-matters.user.styl
+@preprocessor	stylus
 
-@var			select   layoutChange    "擴大內容" [
+@var			select	 layoutChange	 "擴大內容" [
 					"focusMatters:專注內容",
 					"mockOriginal:仿製原版",
 					"off:關閉"
 				]
-@var			checkbox darkModeLook    "暗色模式"  0
-@var			checkbox lookOptimize    "視覺優化"  1
+@var			checkbox darkModeLook	 "暗色模式"	 0
+@var			checkbox lookOptimize	 "視覺優化"	 1
 ==/UserStyle== */
 
 bg-color = #121212
@@ -332,15 +332,15 @@ second-color-text = #000
 
 			// Links
 		.u-link-green
-		    &, &:link, &:visited
-			    color primary-color
-		    &:hover, &:active, &:focus
-		    	color lighten(primary-color, 4%)
+			&, &:link, &:visited
+				color primary-color
+			&:hover, &:active, &:focus
+				color lighten(primary-color, 4%)
 
 			// Tooltop pop-up
 		.tippy-tooltip
 			&, &.dropdown-theme, &.tooltip-theme
-			    color rgba(text-color, 0.87) !important
+				color rgba(text-color, 0.87) !important
 				background-color lighten(bg-color, 5%) !important
 			&[data-placement^="top"]
 				.tippy-arrow
@@ -366,7 +366,7 @@ second-color-text = #000
 			color rgba(text-color, .6) !important
 
 		.cover
-		    background-color lighten(bg-color, 7%) !important
+			background-color lighten(bg-color, 7%) !important
 
 		.score
 			color rgba(text-color, 0.38) !important
@@ -408,31 +408,31 @@ second-color-text = #000
 		// Layout
 
 		header
-		    border-bottom-color rgba(text-color, 0.08) !important
+			border-bottom-color rgba(text-color, 0.08) !important
 			&.solid-fixed
 				border-bottom-color rgba(text-color, .08) !important
 				background-color bg-color !important
 			&.left, &.right 
 				.published-article
-		    		color rgba(text-color, .6)
-		    &.hasNoBorder
-		        border medium none !important
+					color rgba(text-color, .6)
+			&.hasNoBorder
+				border medium none !important
 
 		@media (min-width: 768px)
-		    article
-		        border-left-color rgba(text-color, 0.08) !important
-		        border-right-color rgba(text-color, 0.08) !important
-		        &.bg-grey-lighter
-		            background-color bg-color !important
+			article
+				border-left-color rgba(text-color, 0.08) !important
+				border-right-color rgba(text-color, 0.08) !important
+				&.bg-grey-lighter
+					background-color bg-color !important
 
 		aside
-		    border-left-color rgba(text-color, 0.08) !important
-		    border-right-color rgba(text-color, 0.08) !important
+			border-left-color rgba(text-color, 0.08) !important
+			border-right-color rgba(text-color, 0.08) !important
 
 		@media (min-width: 1280px)
-		    aside
-		        border-left medium none !important
-		        border-right medium none !important
+			aside
+				border-left medium none !important
+				border-right medium none !important
 
 		.nav-bar
 			border-top-color rgba(text-color, 0.08) !important
@@ -442,10 +442,12 @@ second-color-text = #000
 			border-top-color rgba(text-color, 0.08) !important
 			background-color bg-color !important
 
-		.toolbar-items, .toolbar-toggle-button svg
-			background-color lighten(bg-color, 4%) !important
-			g
-				stroke rgba(text-color, .6) !important
+		.toolbar-items, .toolbar-toggle-button
+			svg
+				border-radius 50%
+				background-color lighten(bg-color, 4%) !important
+				g
+					stroke rgba(text-color, .6) !important
 
 		footer
 			color rgba(text-color, 0.38) !important
@@ -456,11 +458,11 @@ second-color-text = #000
 		// Misc
 
 		.inactive-state
-		    color bg-color
-		    background-color lighten(bg-color, .3)
+			color bg-color
+			background-color lighten(bg-color, .3)
 
 		.list.has-border > .list-item
-		    border-bottom-color rgba(text-color, 0.08) !important
+			border-bottom-color rgba(text-color, 0.08) !important
 
 		#nprogress .bar
 			background-color primary-color-light !important
@@ -479,6 +481,7 @@ second-color-text = #000
 
 		.editor-title
 			input
+				background-color rgba(0,0,0,0)
 				&::-webkit-input-placeholder,
 				&::placeholder
 					color rgba(text-color, .6) !important
@@ -487,6 +490,8 @@ second-color-text = #000
 			figure
 				figcaption
 					color rgba(text-color, .6) !important
+					textarea
+						background-color rgba(0,0,0,0) !important
 				&.audio .player
 					background-color bg-color !important
 					border-color rgba(text-color, 0.08) !important
@@ -572,7 +577,117 @@ second-color-text = #000
 					color rgba(text-color, .6) !important
 				.description
 					color rgba(text-color, .6) !important
+		
+		.block
+			border-top-color rgba(text-color, 0.08) !important
 
+		.switch input
+			& + span
+				background-color lighten(bg-color, 4%) !important
+				&::after
+					background-color lighten(lighten(bg-color, 4%), 7%) !important
+
+		.content.inactive
+			color rgba(text-color, 0.6) !important
+
+		.descendants
+			li
+				&:not(:last-child)
+					article
+						&::before
+							background-color rgba(text-color, 0.08)
+
+		.keepAside ~ aside
+			section
+				border-bottom-color rgba(text-color, 0.08)
+				color rgba(text-color, 0.6) !important
+				&.expanded
+					color rgba(text-color, 0.87) !important
+					.cover-intro
+						color rgba(text-color, 0.6) !important
+					.cover-image
+						border-color rgba(0,0,0,0)
+						&.selected
+							border-color primary-color-light
+					.tags-intro
+						color rgba(text-color, 0.6) !important
+					.tags-container .tag
+						color rgba(text-color, 0.87) !important
+						background-color primary-color-dark !important
+					.search-tag-input
+						background-color rgba(text-color, 0) !important
+						color rgba(text-color, 0.87) !important
+						&::-webkit-input-placeholder,
+						&::placeholder
+							color rgba(text-color, 0.6) !important
+					.search-tag-item 
+						.keyword, .count
+							color rgba(text-color, 0.6) !important
+					.intro
+						color rgba(text-color, 0.6) !important
+					input[type="search"]
+						background-color rgba(text-color, 0.04) !important
+						border-bottom-color rgba(text-color, 0.6) !important
+						&::-webkit-input-placeholder,
+						&::placeholder
+							color rgba(text-color, 0.6) !important
+						&:focus, &.focus
+							background-color rgba(text-color, 0.1) !important
+							border-bottom-color primary-color !important
+
+		.ql-editor.ql-blank::before
+			color rgba(text-color, 0.6) !important
+
+		.ql-bubble
+			.ql-stroke,
+			.ql-stroke-miter
+				fill none
+				stroke rgba(text-color, 0.87)
+			.ql-fill, .ql-stroke.ql-fill
+				fill rgba(text-color, 0.87)
+			.ql-empty
+				fill none
+			.ql-tooltip
+				&:not(.ql-flip)
+					.ql-tooltip-arrow
+						border-bottom-color lighten(bg-color, 5%) !important
+						&::before
+							border-bottom-color rgba(text-color, 0.08) !important
+				&.ql-flip
+					.ql-tooltip-arrow
+						border-top-color lighten(bg-color, 5%) !important
+						&::before
+							border-top-color rgba(text-color, 0.08) !important
+			
+			.ql-tooltip-editor
+				input[type="text"]
+					color rgba(text-color, 0.87) !important
+			
+			.ql-toolbar
+				background-color lighten(bg-color, 5%) !important
+				border-color rgba(text-color, 0.08) !important
+				button
+					&:hover, &:focus, &.ql-active
+						color primary-color-light !important
+						.ql-fill, .ql-stroke.ql-fill
+							color primary-color-light !important
+		
+		#editor-article-container .spinner
+			stroke rgba(text-color, 0.38)
+			
+		.toast.green
+			background-color primary-color-dark !important
+			
+		.embed-clipboard
+			background-color rgba(0,0,0,0) !important
+
+		@media (pointer: coarse)
+			.ql-bubble .ql-toolbar .ql-bubble .ql-toolbar button:hover:not(.ql-active)
+				color rgba(text-color, 0.87) !important
+				.ql-fill, .ql-stroke.ql-fill
+					fill rgba(text-color, 0.87) !important
+				.ql-stroke, .ql-stroke-miter
+					stroke rgba(text-color, 0.87) !important
 
 @-moz-document regexp("https:\/\/matters\.news\/@.+\/((?!comments|followe[re]s).+)")
 	// 自創佈局
