@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+033
+@version		0.2.0-dev+034
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -735,6 +735,9 @@ red-color = #b00020
 		
 		.highlight
 			color primary-color-light !important
+			
+		.error .image img[src$=".svg"][src^="/_next/static"]
+			mix-blend-mode soft-light
 
 		@media (pointer: coarse)
 			.ql-bubble .ql-toolbar .ql-bubble .ql-toolbar button:hover:not(.ql-active)
