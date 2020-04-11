@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+034
+@version		0.2.0-dev+035
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -230,6 +230,8 @@ red-color = #b00020
 					background-color lighten(primary-color, 4%) !important
 
 		.bg-green-lighter
+			&.slides
+				background-color primary-color-dark !important
 			> .content > .hotarea
 				background-color primary-color-dark !important
 		
@@ -269,6 +271,11 @@ red-color = #b00020
 			> .content > .hotarea
 				border-color second-color
 
+			// Yellow
+		.bg-yellow-lighter
+			&.slides
+				background-color mix(second-color-dark, bg-color, 20%) !important
+
 			// Grey
 		.grey
 			color rgba(text-color, 0.6)
@@ -291,7 +298,7 @@ red-color = #b00020
 			&:hover, &:focus
 				> .content > .hotarea
 					background-color lighten(lighten(bg-color, 7%), 4%) !important
-			&:not(.disabled):not(.container)
+			&:not(.disabled):not(.container):not(.slides)
 				&:hover, &:focus
 					background-color lighten(lighten(bg-color, 7%), 4%) !important
 
@@ -314,8 +321,11 @@ red-color = #b00020
 		.border-grey-light > .content > .hotarea
 			border-color lighten(bg-color, 6%)
 
-		.border-grey-lighter > .content > .hotarea
-			border-color lighten(bg-color, 7%)
+		.border-grey-lighter
+			&:not(.container)
+				border-color lighten(bg-color, 7%)
+			&.container > .content > .hotarea
+				border-color lighten(bg-color, 7%)
 
 			// White
 		.white
@@ -434,8 +444,9 @@ red-color = #b00020
 			background-color lighten(bg-color, 3%)
 			border-color rgb(200, 92, 65)
 		
-		.logo svg path
-			fill rgba(text-color, 0.87) !important
+		@media (min-width: 1024px)
+			.logo svg path
+				fill rgba(text-color, 0.87) !important
 
 		// Layout
 
@@ -738,6 +749,28 @@ red-color = #b00020
 			
 		.error .image img[src$=".svg"][src^="/_next/static"]
 			mix-blend-mode soft-light
+			
+		.slides
+			li > .container
+				background-color rgba(text-color, .04)
+			&.bg-green-lighter
+				li > .card.bg-white
+					background-color bg-color !important
+					> .container
+						color rgba(text-color, 0.87) !important
+					&:not(.disabled):not(.container)
+						&:hover, &:focus
+							background-color lighten(bg-color, 4%) !important
+		
+		.side-drawer-nav > [role="dialog"] > nav
+			background-color lighten(bg-color, 5%) !important
+			
+		body
+			overflow-x hidden
+		
+		@media (min-width: 768px)
+			body
+				overflow-x auto
 
 		@media (pointer: coarse)
 			.ql-bubble .ql-toolbar .ql-bubble .ql-toolbar button:hover:not(.ql-active)
