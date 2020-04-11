@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+027
+@version		0.2.0-dev+028
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -61,6 +61,11 @@ red-color = #b00020
 				transform translateY(-0.06rem) !important
 		.search-tag-input
 			transform translateY(0.06rem) !important
+			
+		// 隱藏編輯器中 hr 元素的光標
+		// Hide caret of hr element that with contenteditable 
+		hr
+			caret-color rgba(0,0,0,0)
 
 		// 爲開關按鈕換更好的動畫
 		// Optimize switch with transform instead of box-shadow and left/right
@@ -752,7 +757,7 @@ red-color = #b00020
 @-moz-document regexp("https:\/\/matters\.news\/migration\/?")
 	if darkModeLook
 		#steps .step img
-			filter invert(92.9%) hue-rotate(185deg) saturate(125%)
+			filter filter invert(92.9%) hue-rotate(185deg) saturate(125%)
 		.intro-wrap, .banner
 			color rgba(text-color, .87)
 			background-blend-mode multiply
