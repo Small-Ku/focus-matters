@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+028
+@version		0.2.0-dev+029
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -747,12 +747,15 @@ red-color = #b00020
 @-moz-document regexp("https:\/\/matters\.news\/about\/?")
 	if darkModeLook
 		.features
-			background linear-gradient( 90deg, second-color-dark 50%, transparent 50% ) no-repeat !important
+			background second-color-dark !important
 			.feature-section
 				.intro p
 					color second-color-light !important
 				img
 					filter invert(90%) hue-rotate(180deg) brightness(110%)
+		@media (min-width: 768px)
+			.features
+				background linear-gradient( 90deg, second-color-dark 50%, transparent 50% ) no-repeat !important
 				
 @-moz-document regexp("https:\/\/matters\.news\/migration\/?")
 	if darkModeLook
