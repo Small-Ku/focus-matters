@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+026
+@version		0.2.0-dev+027
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -191,10 +191,10 @@ red-color = #b00020
 			color bg-color
 
 		.bg-half-black
-			.hotarea
+			> .content > .hotarea
 				background rgba(#fff, 0.5)
 			&:hover, &:focus
-				.hotarea
+				> .content > .hotarea
 					background-color rgb(0, 0, 0)
 
 			// Green
@@ -213,33 +213,33 @@ red-color = #b00020
 				color rgba(primary-color-text, 0.87) !important
 
 		.bg-green
-			.hotarea
+			> .content > .hotarea
 				background-color primary-color !important
-		.bg-green
 			&:hover, &:focus
-				.hotarea
+				> .content > .hotarea
 					background-color lighten(primary-color, 4%) !important
 
 		.bg-green-lighter
-			.hotarea
+			> .content > .hotarea
 				background-color primary-color-dark !important
+		
 		.bg-green-lighter, .bg-active-green-lighter
 			&:hover, &:focus
-				.hotarea
+				> .content > .hotarea
 					background-color lighten(primary-color-dark, 4%) !important
 
 		.bg-active-green
 			&:hover, &:focus
-				.hotarea
+				> .content > .hotarea
 					color bg-color !important
 					background-color primary-color-light !important
 
 		.border-green
-			.hotarea
+			> .content > .hotarea
 				border-color primary-color-light !important
 
 		.border-green-lighter
-			.hotarea
+			> .content > .hotarea
 				border-color lighten(primary-color-light, 5%) !important
 
 			// Gold
@@ -249,14 +249,14 @@ red-color = #b00020
 		.bg-gold
 			&, .white
 				color rgba(second-color-text, 0.87) !important
-			.hotarea
+			> .content > .hotarea
 				background-color second-color !important
 			&:hover, &:focus
-				.hotarea
+				> .content > .hotarea
 					background-color  lighten(second-color, 4%) !important
 
 		.border-gold
-			.hotarea
+			> .content > .hotarea
 				border-color second-color
 
 			// Grey
@@ -272,15 +272,14 @@ red-color = #b00020
 		.grey-darker
 			color text-color
 
-		.bg-grey
-			.hotarea
-				background-color lighten(bg-color, 5%)
+		.bg-grey > .content > .hotarea
+			background-color lighten(bg-color, 5%)
 
 		.bg-grey-lighter:not(article)
-			&:not(.container), & .hotarea
+			&:not(.container), & > .content > .hotarea
 				background-color lighten(bg-color, 7%) !important
 			&:hover, &:focus
-				.hotarea
+				> .content > .hotarea
 					background-color lighten(lighten(bg-color, 7%), 4%) !important
 			&:not(.disabled):not(.container)
 				&:hover, &:focus
@@ -288,7 +287,7 @@ red-color = #b00020
 
 		.bg-active-grey-lighter
 			&:hover, &:focus
-				.hotarea
+				> .content > .hotarea
 					background-color lighten(lighten(bg-color, 7%), 4%) !important
 			&:not(.disabled):not(.container)
 				&:hover, &:focus
@@ -296,20 +295,17 @@ red-color = #b00020
 
 		.bg-active-grey-lighter-active
 			&:hover, &:focus
-				.hotarea
+				> .content > .hotarea
 					background-color lighten(lighten(bg-color, 7%), 5%) !important
 
-		.border-grey
-			.hotarea
-				border-color lighten(bg-color, 5%)
+		.border-grey > .content > .hotarea
+			border-color lighten(bg-color, 5%)
 
-		.border-grey-light
-			.hotarea
-				border-color lighten(bg-color, 6%)
+		.border-grey-light > .content > .hotarea
+			border-color lighten(bg-color, 6%)
 
-		.border-grey-lighter
-			.hotarea
-				border-color lighten(bg-color, 7%)
+		.border-grey-lighter > .content > .hotarea
+			border-color lighten(bg-color, 7%)
 
 			// White
 		.white
@@ -325,9 +321,8 @@ red-color = #b00020
 				&:hover, &:focus
 					background-color rgba(#fff, 4%) !important
 
-		.border-white
-			.hotarea
-				border-color rgba(#fff, 87%) !important
+		.border-white > .content > .hotarea
+			border-color rgba(#fff, 87%) !important
 
 			// Red
 		.red
@@ -337,19 +332,19 @@ red-color = #b00020
 			color red-color !important
 
 		.bg-red
-			.hotarea
+			> .content > .hotarea
 				background-color red-color !important
 			&:hover, &:focus 
-				.hotarea
+				> .content > .hotarea
 					background-color lighten(red-color, 4%) !important
 
 		.bg-active-red
 			&:hover, &:focus 
-				.hotarea
+				> .content > .hotarea
 					background-color red-color !important
 
 		.border-red
-			.hotarea
+			> .content > .hotarea
 				border-color red-color !important
 
 		// Custom components in Matters
