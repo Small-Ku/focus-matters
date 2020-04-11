@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+025
+@version		0.2.0-dev+026
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -718,8 +718,19 @@ red-color = #b00020
 			> header
 				box-shadow rgba(text-color, 0.08) 0px 1px 0px 0px !important
 			form
-				background-color rgba(0,0,0,0) !important 
+				background-color rgba(0,0,0,0) !important
 				
+		.avatar-wrap.multi .avatar
+			border-color bg-color !important
+		
+		.content-wrap h4
+			color rgba(text-color, 0.6) !important
+			a 
+				color rgba(text-color, 0.87) !important
+		
+		.highlight
+			color primary-color-light !important
+
 		@media (pointer: coarse)
 			.ql-bubble .ql-toolbar .ql-bubble .ql-toolbar button:hover:not(.ql-active)
 				color rgba(text-color, 0.87) !important
