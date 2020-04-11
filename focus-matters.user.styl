@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0-dev+030
+@version		0.2.0-dev+031
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -67,6 +67,11 @@ red-color = #b00020
 		hr
 			caret-color rgba(0,0,0,0)
 
+		// 隱藏編輯器有圖片時的溢出
+		// Hide overflow when editor have image inside
+		.ql-editor
+			overflow-x hidden
+		
 		// 爲開關按鈕換更好的動畫
 		// Optimize switch with transform instead of box-shadow and left/right
 		.switch input
