@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.3.0-dev+000
+@version		0.3.0-dev+001
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -10,12 +10,16 @@
 @updateURL		https://raw.githubusercontent.com/Small-Ku/focus-matters/master/focus-matters.user.styl
 @preprocessor	stylus
 
-@var			select	 layoutChange	 "擴大內容" [
+@var			select   layoutChange	 "擴大內容" [
 					"focusMatters:專注內容",
 					"mockOriginal:仿製原版",
 					"off:關閉"
 				]
-@var			checkbox darkModeLook	 "暗色模式"	 0
+@var			select   darkModeLook	 "暗色模式"	[
+					"1:開啓",
+					"2:跟隨系統",
+					"0*:關閉"
+				]
 @var			checkbox lookOptimize	 "視覺優化"	 1
 ==/UserStyle== */
 
@@ -152,30 +156,34 @@ red-color = #b00020
 
 	// 暗黑模式
 	// Dark Mode
-	if darkModeLook
-		// Global settings
-		html
-			background-color bg-color
-			color rgba(text-color, 0.87)
+	if darkModeLook == 1
+		darkModeQuery = "screen"
+	if darkModeLook == 2
+		darkModeQuery = "screen and (prefers-color-scheme: dark)"
+	if darkModeLook > 0
+		@media darkModeQuery
+			// Global settings
+			html
+				background-color bg-color
+				color rgba(text-color, 0.87)
 
-		[contenteditable]
-			caret-color primary-color-light
+			[contenteditable]
+				caret-color primary-color-light
 
-		// HTML components
-		hr
-			border-color rgba(text-color, 0.08) currentcolor currentcolor
+			// HTML components
+			hr
+				border-color rgba(text-color, 0.08) currentcolor currentcolor
 
-		time
-			color rgba(text-color, 0.6) !important
+			time
+				color rgba(text-color, 0.6) !important
 
-		p
-			color rgba(text-color, 0.87)
+			p
+				color rgba(text-color, 0.87)
 
-		code, kbd, samp, pre
-			background-color lighten(bg-color, 5%)
+			code, kbd, samp, pre
+				background-color lighten(bg-color, 5%)
 
-		form
-			input[type="search"]
+			form input[type="search"]
 				color  rgba(text-color, 0.87) !important
 				border-color lighten(bg-color, 4%) !important
 				background-color lighten(bg-color, 4%) !important
@@ -186,596 +194,594 @@ red-color = #b00020
 				&::placeholder
 					color rgba(text-color, .6)
 
-		// Custom color schemes
+			// Custom color schemes
 
-			// Black
-		.black
-			color rgba(text-color, 0.87) !important
+				// Black
+			.black
+				color rgba(text-color, 0.87) !important
 
-		.text-black
-			color rgba(text-color, 0.87) !important
+			.text-black
+				color rgba(text-color, 0.87) !important
 
-		.text-active-black:hover, .text-active-black:focus
-			color bg-color
+			.text-active-black:hover, .text-active-black:focus
+				color bg-color
 
-		.bg-half-black
-			> .content > .hotarea
-				background rgba(#fff, 0.5)
-			&:hover, &:focus
+			.bg-half-black
 				> .content > .hotarea
-					background-color rgb(0, 0, 0)
+					background rgba(#fff, 0.5)
+				&:hover, &:focus
+					> .content > .hotarea
+						background-color rgb(0, 0, 0)
 
-			// Green
-		.green
-			color primary-color-light !important
-
-		.text-green
-			color primary-color-light !important
-
-		.text-active-green
-			&:hover, &:focus
+				// Green
+			.green
 				color primary-color-light !important
 
-		.bg-green, .bg-green-lighter
-			&, .green
-				color rgba(primary-color-text, 0.87) !important
+			.text-green
+				color primary-color-light !important
 
-		.bg-green
-			> .content > .hotarea
-				background-color primary-color !important
-			&:hover, &:focus
-				> .content > .hotarea
-					background-color lighten(primary-color, 4%) !important
+			.text-active-green
+				&:hover, &:focus
+					color primary-color-light !important
 
-		.bg-green-lighter
-			&.slides
-				background-color primary-color-dark !important
-			> .content > .hotarea
-				background-color primary-color-dark !important
-		
-		.bg-green-lighter, .bg-active-green-lighter
-			&:hover, &:focus
-				> .content > .hotarea
-					background-color lighten(primary-color-dark, 4%) !important
+			.bg-green, .bg-green-lighter
+				&, .green
+					color rgba(primary-color-text, 0.87) !important
 
-		.bg-active-green
-			&:hover, &:focus
+			.bg-green
 				> .content > .hotarea
+					background-color primary-color !important
+				&:hover, &:focus
+					> .content > .hotarea
+						background-color lighten(primary-color, 4%) !important
+
+			.bg-green-lighter
+				&.slides
+					background-color primary-color-dark !important
+				> .content > .hotarea
+					background-color primary-color-dark !important
+
+			.bg-green-lighter, .bg-active-green-lighter
+				&:hover, &:focus
+					> .content > .hotarea
+						background-color lighten(primary-color-dark, 4%) !important
+
+			.bg-active-green
+				&:hover, &:focus
+					> .content > .hotarea
+						color bg-color !important
+						background-color primary-color-light !important
+
+			.border-green
+				> .content > .hotarea
+					border-color primary-color-light !important
+
+			.border-green-lighter
+				> .content > .hotarea
+					border-color lighten(primary-color-light, 5%) !important
+
+				// Gold
+			.gold
+				color second-color
+
+			.bg-gold
+				&, .white
+					color rgba(second-color-text, 0.87) !important
+				> .content > .hotarea
+					background-color second-color !important
+				&:hover, &:focus
+					> .content > .hotarea
+						background-color  lighten(second-color, 4%) !important
+
+			.border-gold
+				> .content > .hotarea
+					border-color second-color
+
+				// Yellow
+			.bg-yellow-lighter
+				&.slides
+					background-color mix(second-color-dark, bg-color, 20%) !important
+
+				// Grey
+			.grey
+				color rgba(text-color, 0.6)
+
+			.grey-light
+				color rgba(text-color, 0.38)
+
+			.grey-dark
+				color rgba(text-color, 0.87)
+
+			.grey-darker
+				color text-color
+
+			.bg-grey > .content > .hotarea
+				background-color lighten(bg-color, 5%)
+
+			.bg-grey-lighter:not(article)
+				&:not(.container), & > .content > .hotarea
+					background-color lighten(bg-color, 7%) !important
+				&:hover, &:focus
+					> .content > .hotarea
+						background-color lighten(lighten(bg-color, 7%), 4%) !important
+				&:not(.disabled):not(.container):not(.slides)
+					&:hover, &:focus
+						background-color lighten(lighten(bg-color, 7%), 4%) !important
+
+			.bg-active-grey-lighter
+				&:hover, &:focus
+					> .content > .hotarea
+						background-color lighten(lighten(bg-color, 7%), 4%) !important
+				&:not(.disabled):not(.container)
+					&:hover, &:focus
+						background-color lighten(lighten(bg-color, 7%), 4%) !important
+
+			.bg-active-grey-lighter-active
+				&:hover, &:focus
+					> .content > .hotarea
+						background-color lighten(lighten(bg-color, 7%), 5%) !important
+
+			.border-grey > .content > .hotarea
+				border-color lighten(bg-color, 5%)
+
+			.border-grey-light > .content > .hotarea
+				border-color lighten(bg-color, 6%)
+
+			.border-grey-lighter
+				&:not(.container)
+					border-color lighten(bg-color, 7%)
+				&.container > .content > .hotarea
+					border-color lighten(bg-color, 7%)
+
+				// White
+			.white
+				color bg-color
+
+			.text-active-white
+				&:hover, &:focus
 					color bg-color !important
-					background-color primary-color-light !important
 
-		.border-green
-			> .content > .hotarea
-				border-color primary-color-light !important
+			.bg-white
+				background-color rgba(0,0,0,0) !important
+				&:not(.disabled):not(.container)
+					&:hover, &:focus
+						background-color rgba(#fff, 4%) !important
 
-		.border-green-lighter
-			> .content > .hotarea
-				border-color lighten(primary-color-light, 5%) !important
+			.border-white > .content > .hotarea
+				border-color rgba(#fff, 87%) !important
 
-			// Gold
-		.gold
-			color second-color
+				// Red
+			.red
+				color red-color !important
 
-		.bg-gold
-			&, .white
-				color rgba(second-color-text, 0.87) !important
-			> .content > .hotarea
-				background-color second-color !important
-			&:hover, &:focus
-				> .content > .hotarea
-					background-color  lighten(second-color, 4%) !important
+			.text-red
+				color red-color !important
 
-		.border-gold
-			> .content > .hotarea
-				border-color second-color
-
-			// Yellow
-		.bg-yellow-lighter
-			&.slides
-				background-color mix(second-color-dark, bg-color, 20%) !important
-
-			// Grey
-		.grey
-			color rgba(text-color, 0.6)
-
-		.grey-light
-			color rgba(text-color, 0.38)
-
-		.grey-dark
-			color rgba(text-color, 0.87)
-
-		.grey-darker
-			color text-color
-
-		.bg-grey > .content > .hotarea
-			background-color lighten(bg-color, 5%)
-
-		.bg-grey-lighter:not(article)
-			&:not(.container), & > .content > .hotarea
-				background-color lighten(bg-color, 7%) !important
-			&:hover, &:focus
-				> .content > .hotarea
-					background-color lighten(lighten(bg-color, 7%), 4%) !important
-			&:not(.disabled):not(.container):not(.slides)
-				&:hover, &:focus
-					background-color lighten(lighten(bg-color, 7%), 4%) !important
-
-		.bg-active-grey-lighter
-			&:hover, &:focus
-				> .content > .hotarea
-					background-color lighten(lighten(bg-color, 7%), 4%) !important
-			&:not(.disabled):not(.container)
-				&:hover, &:focus
-					background-color lighten(lighten(bg-color, 7%), 4%) !important
-
-		.bg-active-grey-lighter-active
-			&:hover, &:focus
-				> .content > .hotarea
-					background-color lighten(lighten(bg-color, 7%), 5%) !important
-
-		.border-grey > .content > .hotarea
-			border-color lighten(bg-color, 5%)
-
-		.border-grey-light > .content > .hotarea
-			border-color lighten(bg-color, 6%)
-
-		.border-grey-lighter
-			&:not(.container)
-				border-color lighten(bg-color, 7%)
-			&.container > .content > .hotarea
-				border-color lighten(bg-color, 7%)
-
-			// White
-		.white
-			color bg-color
-
-		.text-active-white
-			&:hover, &:focus
-				color bg-color !important
-
-		.bg-white
-			background-color rgba(0,0,0,0) !important
-			&:not(.disabled):not(.container)
-				&:hover, &:focus
-					background-color rgba(#fff, 4%) !important
-
-		.border-white > .content > .hotarea
-			border-color rgba(#fff, 87%) !important
-
-			// Red
-		.red
-			color red-color !important
-
-		.text-red
-			color red-color !important
-
-		.bg-red
-			> .content > .hotarea
-				background-color red-color !important
-			&:hover, &:focus 
-				> .content > .hotarea
-					background-color lighten(red-color, 4%) !important
-
-		.bg-active-red
-			&:hover, &:focus 
+			.bg-red
 				> .content > .hotarea
 					background-color red-color !important
+				&:hover, &:focus 
+					> .content > .hotarea
+						background-color lighten(red-color, 4%) !important
 
-		.border-red
-			> .content > .hotarea
-				border-color red-color !important
+			.bg-active-red
+				&:hover, &:focus 
+					> .content > .hotarea
+						background-color red-color !important
 
-		// Custom components in Matters
+			.border-red
+				> .content > .hotarea
+					border-color red-color !important
 
-			// Links
-		.u-link-green
-			&, &:link, &:visited
-				color primary-color
-			&:hover, &:active, &:focus
-				color lighten(primary-color, 4%)
+			// Custom components in Matters
 
-			// Tooltop pop-up
-		.tippy-tooltip
-			&, &.dropdown-theme, &.tooltip-theme
-				color rgba(text-color, 0.87) !important
-				background-color lighten(bg-color, 5%) !important
-			&[data-placement^="top"]
-				.tippy-arrow
-					border-top-color rgba(text-color, 0.87)
-			&[data-placement^="bottom"]
-				.tippy-arrow
-					border-bottom-color rgba(text-color, 0.87)
-			&[data-placement^="left"]
-				.tippy-arrow
-					border-left-color rgba(text-color, 0.87)
-			&[data-placement^="right"]
-				.tippy-arrow
-					border-right-color rgba(text-color, 0.87)
+				// Links
+			.u-link-green
+				&, &:link, &:visited
+					color primary-color
+				&:hover, &:active, &:focus
+					color lighten(primary-color, 4%)
 
-		.unread-icon
-			&::after
-				background-color primary-color-light !important
+				// Tooltop pop-up
+			.tippy-tooltip
+				&, &.dropdown-theme, &.tooltip-theme
+					color rgba(text-color, 0.87) !important
+					background-color lighten(bg-color, 5%) !important
+				&[data-placement^="top"]
+					.tippy-arrow
+						border-top-color rgba(text-color, 0.87)
+				&[data-placement^="bottom"]
+					.tippy-arrow
+						border-bottom-color rgba(text-color, 0.87)
+				&[data-placement^="left"]
+					.tippy-arrow
+						border-left-color rgba(text-color, 0.87)
+				&[data-placement^="right"]
+					.tippy-arrow
+						border-right-color rgba(text-color, 0.87)
 
-		.avatar:not(a)
-			background-color lighten(bg-color, 7%) !important
+			.unread-icon
+				&::after
+					background-color primary-color-light !important
 
-		.description
-			color rgba(text-color, .6) !important
+			.avatar:not(a)
+				background-color lighten(bg-color, 7%) !important
 
-		.cover
-			background-color lighten(bg-color, 7%) !important
-
-		.score
-			color rgba(text-color, 0.38) !important
-
-		.username
-			color rgba(text-color, .6) !important
-
-		.displayname
-			.name-color-black &
-				color rgba(text-color, .87) !important
-
-			.name-color-white &
-				color rgba(bg-color, .87) !important
-
-			.name-color-grey-darker &
+			.description
 				color rgba(text-color, .6) !important
 
-		.switch input + span
-			background-color darken(#fff, .6) !important
-			&::after
-				background-color darken(#fff, .13) !important
-			&::before
-				background-color primary-color !important
+			.cover
+				background-color lighten(bg-color, 7%) !important
 
-		.empty
-			color rgba(text-color, 0.38) !important
+			.score
+				color rgba(text-color, 0.38) !important
 
-		.error-code
-			color rgba(text-color, 0.6) !important
+			.username
+				color rgba(text-color, .6) !important
 
-		.error-message
-			color rgba(text-color, 0.6) !important
+			.displayname
+				.name-color-black &
+					color rgba(text-color, .87) !important
 
-		.error-detail
-			color rgb(200, 92, 65)
-			background-color lighten(bg-color, 3%)
-			border-color rgb(200, 92, 65)
-		
-		.logo svg path[fill="#333"]
-			fill rgba(text-color, 0.87) !important
+				.name-color-white &
+					color rgba(bg-color, .87) !important
 
-		// Layout
+				.name-color-grey-darker &
+					color rgba(text-color, .6) !important
 
-		header
-			border-bottom-color none !important
-			&.solid-fixed
-				border-bottom-color rgba(text-color, .08) !important
-				background-color bg-color !important
-			&.left, &.right 
-				.published-article
-					color rgba(text-color, .6)
-			&.hasNoBorder
-				border medium none !important
+			.switch input + span
+				background-color darken(#fff, .6) !important
+				&::after
+					background-color darken(#fff, .13) !important
+				&::before
+					background-color primary-color !important
 
-		@media (min-width: 768px)
-			article
+			.empty
+				color rgba(text-color, 0.38) !important
+
+			.error-code
+				color rgba(text-color, 0.6) !important
+
+			.error-message
+				color rgba(text-color, 0.6) !important
+
+			.error-detail
+				color rgb(200, 92, 65)
+				background-color lighten(bg-color, 3%)
+				border-color rgb(200, 92, 65)
+			
+			.logo svg path[fill="#333"]
+				fill rgba(text-color, 0.87) !important
+
+			// Layout
+
+			header
+				border-bottom-color none !important
+				&.solid-fixed
+					border-bottom-color rgba(text-color, .08) !important
+					background-color bg-color !important
+				&.left, &.right 
+					.published-article
+						color rgba(text-color, .6)
+				&.hasNoBorder
+					border medium none !important
+
+			@media (min-width: 768px)
+				article
+					border-left-color rgba(text-color, 0.08) !important
+					border-right-color rgba(text-color, 0.08) !important
+					&.bg-grey-lighter
+						background-color bg-color !important
+
+			aside
 				border-left-color rgba(text-color, 0.08) !important
 				border-right-color rgba(text-color, 0.08) !important
-				&.bg-grey-lighter
-					background-color bg-color !important
 
-		aside
-			border-left-color rgba(text-color, 0.08) !important
-			border-right-color rgba(text-color, 0.08) !important
+			@media (min-width: 1280px)
+				aside
+					border-left medium none !important
+					border-right medium none !important
 
-		@media (min-width: 1280px)
-			aside
-				border-left medium none !important
-				border-right medium none !important
+			.nav-bar
+				border-top-color rgba(text-color, 0.08) !important
+				background-color bg-color !important
 
-		.nav-bar
-			border-top-color rgba(text-color, 0.08) !important
-			background-color bg-color !important
+			.toolbar
+				border-top-color rgba(text-color, 0.08) !important
+				background-color bg-color !important
 
-		.toolbar
-			border-top-color rgba(text-color, 0.08) !important
-			background-color bg-color !important
+			.toolbar-items, .toolbar-toggle-button
+				svg
+					border-radius 50%
+					background-color lighten(bg-color, 4%) !important
+					g
+						stroke rgba(text-color, .6) !important
 
-		.toolbar-items, .toolbar-toggle-button
-			svg
-				border-radius 50%
-				background-color lighten(bg-color, 4%) !important
-				g
-					stroke rgba(text-color, .6) !important
+			footer
+				color rgba(text-color, 0.38) !important
+				.copyright
+					color rgba(text-color, 0.12) !important
 
-		footer
-			color rgba(text-color, 0.38) !important
-			.copyright
-				color rgba(text-color, 0.12) !important
+			// Misc
 
+			.inactive-state
+				color bg-color
+				background-color lighten(bg-color, .3)
 
-		// Misc
+			.list.has-border > .list-item
+				border-bottom-color rgba(text-color, 0.08) !important
 
-		.inactive-state
-			color bg-color
-			background-color lighten(bg-color, .3)
+			#nprogress .bar
+				background-color primary-color-light !important
 
-		.list.has-border > .list-item
-			border-bottom-color rgba(text-color, 0.08) !important
-
-		#nprogress .bar
-			background-color primary-color-light !important
-
-		.list .count
-			color rgba(text-color, .6) !important
-
-		.inline
-			background-color rgba(text-color, .05) !important
-			&:hover, &:focus
-				background-color rgba(primary-color-light, .20) !important
-			&.active
-				background-color rgba(primary-color-light, .12) !important
-				&:hover, &:focus
-					background-color rgba(text-color, .07) !important
-
-		.editor-title input
-			background-color rgba(0,0,0,0)
-			&::-webkit-input-placeholder,
-			&::placeholder
+			.list .count
 				color rgba(text-color, .6) !important
 
-		.u-content, #editor-article-container .ql-editor 
-			figure
-				figcaption
+			.inline
+				background-color rgba(text-color, .05) !important
+				&:hover, &:focus
+					background-color rgba(primary-color-light, .20) !important
+				&.active
+					background-color rgba(primary-color-light, .12) !important
+					&:hover, &:focus
+						background-color rgba(text-color, .07) !important
+
+			.editor-title input
+				background-color rgba(0,0,0,0)
+				&::-webkit-input-placeholder,
+				&::placeholder
 					color rgba(text-color, .6) !important
-					textarea
-						background-color rgba(0,0,0,0) !important
-				&.audio .player
-					background-color bg-color !important
-					border-color rgba(text-color, 0.08) !important
-					header .time
+
+			.u-content, #editor-article-container .ql-editor 
+				figure
+					figcaption
 						color rgba(text-color, .6) !important
-					footer .progress-bar > span
-						background-color primary-color-light
-				&[class*="embed"] > .iframe-container
-					background-color lighten(bg-color, 7%) !important
-			blockquote::before
-				background-color second-color-dark !important
-			a
-				color primary-color-light !important
-				&:hover, &:active, &:focus
-					color lighten(primary-color-light, 10%) !important
-			hr
-				border-color rgba(text-color, 0.24) currentcolor !important
+						textarea
+							background-color rgba(0,0,0,0) !important
+					&.audio .player
+						background-color bg-color !important
+						border-color rgba(text-color, 0.08) !important
+						header .time
+							color rgba(text-color, .6) !important
+						footer .progress-bar > span
+							background-color primary-color-light
+					&[class*="embed"] > .iframe-container
+						background-color lighten(bg-color, 7%) !important
+				blockquote::before
+					background-color second-color-dark !important
+				a
+					color primary-color-light !important
+					&:hover, &:active, &:focus
+						color lighten(primary-color-light, 10%) !important
+				hr
+					border-color rgba(text-color, 0.24) currentcolor !important
 
-		.mention-container
-			color rgba(text-color, .6) !important
-			background-color bg-color !important
+			.mention-container
+				color rgba(text-color, .6) !important
+				background-color bg-color !important
 
-		.count
-			color primary-color-light !important
-
-
-		button.appreciate-button
-			background-color bg-color !important
-			border-color primary-color-light !important
-			color primary-color-light !important
-			&:hover, &:focus
-				background-color lighten(bg-color, 4%) !important
-
-		.received-count
-			color rgba(text-color, .6) !important
-			&.highlight
+			.count
 				color primary-color-light !important
 
-		.avatar-list
-			> *
-				box-shadow 0 0 0 2px rgba(text-color, .87) !important
-			.appreciator-count
-				color rgba(text-color, .87) !important
+			button.appreciate-button
+				background-color bg-color !important
+				border-color primary-color-light !important
+				color primary-color-light !important
+				&:hover, &:focus
+					background-color lighten(bg-color, 4%) !important
+
+			.received-count
+				color rgba(text-color, .6) !important
+				&.highlight
+					color primary-color-light !important
+
+			.avatar-list
+				> *
+					box-shadow 0 0 0 2px rgba(text-color, .87) !important
+				.appreciator-count
+					color rgba(text-color, .87) !important
+					background-color primary-color-dark !important
+
+			.latest-responses-switch
+				color rgba(text-color, .6) !important
+
+			.recent-searches ul li
+				.key
+					color rgba(text-color, 0.6) !important
+					background-color lighten(lighten(bg-color, 7%), 5%) !important
+					&:hover, &:focus
+						background-color lighten(lighten(lighten(bg-color, 7%), 5%), 4%) !important
+
+			.frequent-searches
+				.key
+					color primary-color-light !important
+			
+			.aggregate-section
+				background-color bg-color !important
+				
+			li[role="tab"]
+				color rgba(text-color, .6) !important
+				&:hover, &:focus, &[aria-selected="true"]
+					color rgba(text-color, .87) !important
+				&[aria-selected="true"] .content
+					border-bottom-color rgba(text-color, .87) !important
+			
+			article .user-profile
+				&, & ~ div .list
+					footer
+						color rgba(text-color, .6) !important
+						.count
+							color rgba(text-color, .87) !important
+				~ nav
+					border-bottom-color rgba(text-color, 0.08) !important
+				~ .info
+					.num
+						color rgba(text-color, .87) !important
+					&, .username
+						color rgba(text-color, .6) !important
+					.description
+						color rgba(text-color, .6) !important
+			
+			article nav::after
+				background-image none !important
+			
+			.block
+				border-top-color rgba(text-color, 0.08) !important
+
+			.switch input
+				& + span
+					background-color lighten(bg-color, 4%) !important
+					&::after
+						background-color lighten(lighten(bg-color, 4%), 7%) !important
+
+			.content.inactive
+				color rgba(text-color, 0.6) !important
+
+			.descendants
+				li
+					&:not(:last-child)
+						article
+							&::before
+								background-color rgba(text-color, 0.08)
+			
+			.keepAside ~ aside
+				section
+					border-bottom-color rgba(text-color, 0.08)
+					color rgba(text-color, 0.6) !important
+					&.expanded
+						color rgba(text-color, 0.87) !important
+						.cover-intro
+							color rgba(text-color, 0.6) !important
+						.cover-image
+							border-color rgba(0,0,0,0)
+							&.selected
+								border-color primary-color-light
+						.tags-intro
+							color rgba(text-color, 0.6) !important
+						.tags-container .tag
+							color rgba(text-color, 0.87) !important
+							background-color primary-color-dark !important
+						.search-tag-input
+							background-color rgba(text-color, 0) !important
+							color rgba(text-color, 0.87) !important
+							&::-webkit-input-placeholder,
+							&::placeholder
+								color rgba(text-color, 0.6) !important
+						.search-tag-item 
+							.keyword, .count
+								color rgba(text-color, 0.6) !important
+						.intro
+							color rgba(text-color, 0.6) !important
+
+			.dialog .container form input, .dialog .container form textarea, input[type="search"]
+				background-color rgba(text-color, 0.04) !important
+				color rgba(text-color, 0.6) !important
+				&:hover
+					background-color rgba(text-color, 0.1) !important
+					color rgba(text-color, 0.87) !important
+				&:focus
+					background-color rgba(text-color, 0.12) !important
+					color rgba(text-color, 0.87) !important
+				&::-webkit-input-placeholder,
+				&::placeholder
+					color rgba(text-color, 0.6) !important
+
+			.ql-editor.ql-blank::before
+				color rgba(text-color, 0.6) !important
+
+			.ql-bubble
+				.ql-stroke,
+				.ql-stroke-miter
+					fill none
+					stroke rgba(text-color, 0.87)
+				.ql-fill, .ql-stroke.ql-fill
+					fill rgba(text-color, 0.87)
+				.ql-empty
+					fill none
+				.ql-tooltip
+					&:not(.ql-flip)
+						.ql-tooltip-arrow
+							border-bottom-color lighten(bg-color, 5%) !important
+							&::before
+								border-bottom-color rgba(text-color, 0.08) !important
+					&.ql-flip
+						.ql-tooltip-arrow
+							border-top-color lighten(bg-color, 5%) !important
+							&::before
+								border-top-color rgba(text-color, 0.08) !important
+				
+				.ql-tooltip-editor
+					input[type="text"]
+						color rgba(text-color, 0.87) !important
+				
+				.ql-toolbar
+					background-color lighten(bg-color, 5%) !important
+					border-color rgba(text-color, 0.08) !important
+					button
+						&:hover, &:focus, &.ql-active
+							color primary-color-light !important
+							.ql-fill, .ql-stroke.ql-fill
+								color primary-color-light !important
+
+			#editor-article-container .spinner
+				stroke rgba(text-color, 0.38)
+
+			.toast.green
 				background-color primary-color-dark !important
 
-		.latest-responses-switch
-			color rgba(text-color, .6) !important
-
-		.recent-searches ul li
-			.key
-				color rgba(text-color, 0.6) !important
-				background-color lighten(lighten(bg-color, 7%), 5%) !important
-				&:hover, &:focus
-					background-color lighten(lighten(lighten(bg-color, 7%), 5%), 4%) !important
-
-		.frequent-searches
-			.key
-				color primary-color-light !important
-		
-		.aggregate-section
-			background-color bg-color !important
-			
-		li[role="tab"]
-			color rgba(text-color, .6) !important
-			&:hover, &:focus, &[aria-selected="true"]
-				color rgba(text-color, .87) !important
-			&[aria-selected="true"] .content
-				border-bottom-color rgba(text-color, .87) !important
-		
-		article .user-profile
-			&, & ~ div .list
-				footer
-					color rgba(text-color, .6) !important
-					.count
-						color rgba(text-color, .87) !important
-			~ nav
-				border-bottom-color rgba(text-color, 0.08) !important
-			~ .info
-				.num
-					color rgba(text-color, .87) !important
-				&, .username
-					color rgba(text-color, .6) !important
-				.description
-					color rgba(text-color, .6) !important
-		
-		article nav::after
-			background-image none !important
-		
-		.block
-			border-top-color rgba(text-color, 0.08) !important
-
-		.switch input
-			& + span
-				background-color lighten(bg-color, 4%) !important
-				&::after
-					background-color lighten(lighten(bg-color, 4%), 7%) !important
-
-		.content.inactive
-			color rgba(text-color, 0.6) !important
-
-		.descendants
-			li
-				&:not(:last-child)
-					article
-						&::before
-							background-color rgba(text-color, 0.08)
-		
-		.keepAside ~ aside
-			section
-				border-bottom-color rgba(text-color, 0.08)
-				color rgba(text-color, 0.6) !important
-				&.expanded
-					color rgba(text-color, 0.87) !important
-					.cover-intro
-						color rgba(text-color, 0.6) !important
-					.cover-image
-						border-color rgba(0,0,0,0)
-						&.selected
-							border-color primary-color-light
-					.tags-intro
-						color rgba(text-color, 0.6) !important
-					.tags-container .tag
-						color rgba(text-color, 0.87) !important
-						background-color primary-color-dark !important
-					.search-tag-input
-						background-color rgba(text-color, 0) !important
-						color rgba(text-color, 0.87) !important
-						&::-webkit-input-placeholder,
-						&::placeholder
-							color rgba(text-color, 0.6) !important
-					.search-tag-item 
-						.keyword, .count
-							color rgba(text-color, 0.6) !important
-					.intro
-						color rgba(text-color, 0.6) !important
-
-		.dialog .container form input, .dialog .container form textarea, input[type="search"]
-			background-color rgba(text-color, 0.04) !important
-			color rgba(text-color, 0.6) !important
-			&:hover
-				background-color rgba(text-color, 0.1) !important
-				color rgba(text-color, 0.87) !important
-			&:focus
-				background-color rgba(text-color, 0.12) !important
-				color rgba(text-color, 0.87) !important
-			&::-webkit-input-placeholder,
-			&::placeholder
-				color rgba(text-color, 0.6) !important
-
-		.ql-editor.ql-blank::before
-			color rgba(text-color, 0.6) !important
-
-		.ql-bubble
-			.ql-stroke,
-			.ql-stroke-miter
-				fill none
-				stroke rgba(text-color, 0.87)
-			.ql-fill, .ql-stroke.ql-fill
-				fill rgba(text-color, 0.87)
-			.ql-empty
-				fill none
-			.ql-tooltip
-				&:not(.ql-flip)
-					.ql-tooltip-arrow
-						border-bottom-color lighten(bg-color, 5%) !important
-						&::before
-							border-bottom-color rgba(text-color, 0.08) !important
-				&.ql-flip
-					.ql-tooltip-arrow
-						border-top-color lighten(bg-color, 5%) !important
-						&::before
-							border-top-color rgba(text-color, 0.08) !important
-			
-			.ql-tooltip-editor
-				input[type="text"]
-					color rgba(text-color, 0.87) !important
-			
-			.ql-toolbar
-				background-color lighten(bg-color, 5%) !important
-				border-color rgba(text-color, 0.08) !important
-				button
-					&:hover, &:focus, &.ql-active
-						color primary-color-light !important
-						.ql-fill, .ql-stroke.ql-fill
-							color primary-color-light !important
-
-		#editor-article-container .spinner
-			stroke rgba(text-color, 0.38)
-
-		.toast.green
-			background-color primary-color-dark !important
-
-		.embed-clipboard
-			background-color rgba(0,0,0,0) !important
-
-		.dialog > [role="dialog"] > .container
-			background-color lighten(bg-color, 5%) !important
-			> header
-				box-shadow rgba(text-color, 0.08) 0px 1px 0px 0px !important
-			form
+			.embed-clipboard
 				background-color rgba(0,0,0,0) !important
-				
-		.avatar-wrap.multi .avatar
-			border-color bg-color !important
-		
-		.content-wrap h4
-			color rgba(text-color, 0.6) !important
-			a 
-				color rgba(text-color, 0.87) !important
-		
-		.highlight
-			color primary-color-light !important
-			
-		.error .image img[src$=".svg"][src^="/_next/static"]
-			mix-blend-mode soft-light
-			
-		.slides
-			li > .container
-				background-color rgba(text-color, .04)
-			&.bg-green-lighter
-				li > .card.bg-white
-					background-color bg-color !important
-					> .container
-						color rgba(text-color, 0.87) !important
-					&:not(.disabled):not(.container)
-						&:hover, &:focus
-							background-color lighten(bg-color, 4%) !important
-		
-		.side-drawer-nav > [role="dialog"] > nav
-			background-color lighten(bg-color, 5%) !important
-			
-		body
-			overflow-x hidden
-		
-		@media (min-width: 768px)
-			body
-				overflow-x auto
 
-		@media (pointer: coarse)
-			.ql-bubble .ql-toolbar .ql-bubble .ql-toolbar button:hover:not(.ql-active)
-				color rgba(text-color, 0.87) !important
-				.ql-fill, .ql-stroke.ql-fill
-					fill rgba(text-color, 0.87) !important
-				.ql-stroke, .ql-stroke-miter
-					stroke rgba(text-color, 0.87) !important
+			.dialog > [role="dialog"] > .container
+				background-color lighten(bg-color, 5%) !important
+				> header
+					box-shadow rgba(text-color, 0.08) 0px 1px 0px 0px !important
+				form
+					background-color rgba(0,0,0,0) !important
+					
+			.avatar-wrap.multi .avatar
+				border-color bg-color !important
+			
+			.content-wrap h4
+				color rgba(text-color, 0.6) !important
+				a 
+					color rgba(text-color, 0.87) !important
+			
+			.highlight
+				color primary-color-light !important
+				
+			.error .image img[src$=".svg"][src^="/_next/static"]
+				mix-blend-mode soft-light
+				
+			.slides
+				li > .container
+					background-color rgba(text-color, .04)
+				&.bg-green-lighter
+					li > .card.bg-white
+						background-color bg-color !important
+						> .container
+							color rgba(text-color, 0.87) !important
+						&:not(.disabled):not(.container)
+							&:hover, &:focus
+								background-color lighten(bg-color, 4%) !important
+			
+			.side-drawer-nav > [role="dialog"] > nav
+				background-color lighten(bg-color, 5%) !important
+				
+			body
+				overflow-x hidden
+			
+			@media (min-width: 768px)
+				body
+					overflow-x auto
+
+			@media (pointer: coarse)
+				.ql-bubble .ql-toolbar .ql-bubble .ql-toolbar button:hover:not(.ql-active)
+					color rgba(text-color, 0.87) !important
+					.ql-fill, .ql-stroke.ql-fill
+						fill rgba(text-color, 0.87) !important
+					.ql-stroke, .ql-stroke-miter
+						stroke rgba(text-color, 0.87) !important
 
 @-moz-document url("https://matters.news/help")
 	if darkModeLook
