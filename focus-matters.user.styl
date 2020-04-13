@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.2.0
+@version		0.2.1
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -556,13 +556,14 @@ red-color = #b00020
 		.count
 			color primary-color-light !important
 
-
-		button.appreciate-button
+		.appreciate-button.clap
 			background-color bg-color !important
 			border-color primary-color-light !important
 			color primary-color-light !important
 			&:hover, &:focus
 				background-color lighten(bg-color, 4%) !important
+			.count
+				color rgba(text-color,.87) !important
 
 		.received-count
 			color rgba(text-color, .6) !important
