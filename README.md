@@ -39,7 +39,9 @@ Focus Matters 是志在改善 [Matters](https://matters.news/) 的使用者樣�
 
 ## 規劃
 
-- 暫無
+- 暗色模式跟隨系統的選項
+- 純 CSS 版本 ([#1][i1])
+- 在平板下擴大內容
 
 ## 參與
 
@@ -51,3 +53,5 @@ Focus Matters 是志在改善 [Matters](https://matters.news/) 的使用者樣�
 ## 授權
 
 [MIT](https://opensource.org/licenses/MIT)
+
+[i1]: https://github.com/Samll_Ku/focus-matters/issues/1
