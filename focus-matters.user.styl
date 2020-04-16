@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.3.0-dev+002
+@version		0.3.0-dev+003
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -18,7 +18,7 @@
 @var			select   darkModeLook	 "暗色模式"	[
 					"1:開啓",
 					"2:跟隨系統",
-					"0*:關閉"
+					"0:關閉*"
 				]
 @var			checkbox lookOptimize	 "視覺優化"	 1
 ==/UserStyle== */
@@ -423,7 +423,7 @@ red-color = #b00020
 				.name-color-black &
 					color rgba(text-color, .87) !important
 
-				.name-color-white &
+				.name-color-white:not(.hasAvatar) &
 					color rgba(bg-color, .87) !important
 
 				.name-color-grey-darker &
