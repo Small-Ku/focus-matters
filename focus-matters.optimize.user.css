@@ -1,0 +1,91 @@
+/* ==UserStyle==
+@name			Focus matters - 視覺優化
+@namespace		https://github.com/Small-Ku/focus-matters
+@version		0.4.0-dev+007
+@description	A simple user style for Matters. This is one of the css in the pure css version set, which optimize appearance of components in Matters.
+@author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
+@license		MIT
+@homepageURL	https://github.com/Small-Ku/focus-matters
+@supportURL		https://github.com/Small-Ku/focus-matters/issues
+@updateURL		https://raw.githubusercontent.com/Small-Ku/focus-matters/master/focus-matters.optimize.user.css
+==/UserStyle== */
+
+@-moz-document domain("matters.news") {
+    /* 優化圓角元素的視覺平衡
+       Optimize padding of round text elements with icon */
+    .tag.inline {
+        padding: 0 0.5rem 0 0.35rem !important;
+    }
+    aside .hasNoBorder .title .right .icon {
+        margin-left: -0.12rem !important;
+    }
+    aside .hasNoBorder .title .right .text~.icon {
+        margin-left: 0 !important;
+        margin-right: -0.24rem !important;
+    }
+    .side-nav .hasIcon.text-right .text {
+        padding: 0 0.1rem 0 0.6rem !important;
+    }
+    .side-nav .hasIcon.text-right.white .text {
+        padding: 0 0 0 0.5rem !important;
+    }
+    /* 優化標籤的視覺平衡與統一
+       Optimize visual balances and consistency of tags */
+    .tags-container .tag {
+        padding: 0 0.3rem 0 0.5rem !important;
+        border-radius: 0.75rem;
+    }
+    .tags-container .tag>* {
+        transform: translateY(-0.06rem) !important;
+    }
+    .search-tag-input {
+        transform: translateY(0.06rem) !important;
+    }
+    /* 隱藏編輯器中 hr 元素的光標
+       Hide caret of hr element that with contenteditable */
+    hr {
+        caret-color: rgba(0, 0, 0, 0);
+    }
+    /* 隱藏編輯器有圖片時的溢出
+       Hide overflow when editor have image inside */
+    .ql-editor {
+        overflow-x: hidden;
+    }
+    /* 爲開關按鈕換更好的動畫
+	   Optimize switch with transform instead of box-shadow and left/right */
+    .switch input+span {
+        overflow: hidden;
+    }
+    .switch input+span:before, .switch input+span:after {
+        transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    .switch input+span:before {
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        content: "";
+        background-color: #0d6763;
+        transform: translateX(-2.3rem);
+        border-radius: 0.75rem;
+    }
+    .switch input+span:after {
+        z-index: 1;
+    }
+    .switch input:checked+span {
+        box-shadow: none !important;
+    }
+    .switch input:checked+span:before {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .switch input:checked+span:after {
+        right: auto !important;
+        transform: translateX(1.125rem) !important;
+    }
+}
