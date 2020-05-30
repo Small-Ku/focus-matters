@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.4.0-dev+003
+@version		0.4.0-dev+004
 @description	A simple user style for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -34,6 +34,12 @@ second-color-light = #f4d59a
 second-color-dark = #8e753f
 second-color-text = #000
 red-color = #b00020
+
+
+if darkModeLook == 1
+	darkModeQuery = "screen"
+if darkModeLook == 2
+	darkModeQuery = "screen and (prefers-color-scheme: dark)"
 
 @-moz-document domain("matters.news")
 	// 視覺優化
@@ -155,10 +161,6 @@ red-color = #b00020
 
 	// 暗黑模式
 	// Dark Mode
-	if darkModeLook == 1
-		darkModeQuery = "screen"
-	if darkModeLook == 2
-		darkModeQuery = "screen and (prefers-color-scheme: dark)"
 	if darkModeLook > 0
 		@media darkModeQuery
 			// Global settings
@@ -766,51 +768,55 @@ red-color = #b00020
 
 @-moz-document url("https://matters.news/help")
 	if darkModeLook > 0
-		article ul li + li
-			border-top-color bg-color !important
+		@media darkModeQuery
+			article ul li + li
+				border-top-color bg-color !important
 
 @-moz-document regexp("https:\/\/matters\.news\/about\/?")
 	if darkModeLook > 0
-		.features
-			background second-color-dark !important
-			.feature-section
-				.intro p
-					color second-color-light !important
-				img
-					filter invert(90%) hue-rotate(180deg) brightness(110%)
-		@media (min-width: 768px)
+		@media darkModeQuery
 			.features
-				background linear-gradient( 90deg, second-color-dark 50%, transparent 50% ) no-repeat !important
+				background second-color-dark !important
+				.feature-section
+					.intro p
+						color second-color-light !important
+					img
+						filter invert(90%) hue-rotate(180deg) brightness(110%)
+			@media (min-width: 768px)
+				.features
+					background linear-gradient( 90deg, second-color-dark 50%, transparent 50% ) no-repeat !important
 				
 @-moz-document regexp("https:\/\/matters\.news\/migration\/?")
 	if darkModeLook > 0
-		#steps .step img
-			filter invert(92.9%) hue-rotate(185deg) saturate(125%)
-		.intro-wrap, .banner
-			color rgba(text-color, .87)
-			background-blend-mode multiply
-		.banner .title
-				color primary-color-light !important
+		@media darkModeQuery
+			#steps .step img
+				filter invert(92.9%) hue-rotate(185deg) saturate(125%)
+			.intro-wrap, .banner
+				color rgba(text-color, .87)
+				background-blend-mode multiply
+			.banner .title
+					color primary-color-light !important
 
 @-moz-document regexp("https:\/\/matters\.news\/(about|migration)\/?")
 	if darkModeLook > 0
-		.intro-wrap, .slogan, .banner
-			background-color primary-color-dark !important
-				
-		.reports .item a
-			background-color lighten(bg-color, 5%) !important
-			&:hover, &:focus
-				background-color mix(bg-color, primary-color-light, 87%) !important
-				
-		footer
-			background-color lighten(bg-color, 5%) !important
-			input[type="email"]
-				color  rgba(text-color, .87) !important
-				border-color lighten(lighten(bg-color, 4%), 7%) !important
-				background-color lighten(bg-color, 4%) !important
-				&::-webkit-input-placeholder,
-				&::placeholder
-					color rgba(text-color, .6)
+		@media darkModeQuery
+			.intro-wrap, .slogan, .banner
+				background-color primary-color-dark !important
+					
+			.reports .item a
+				background-color lighten(bg-color, 5%) !important
+				&:hover, &:focus
+					background-color mix(bg-color, primary-color-light, 87%) !important
+					
+			footer
+				background-color lighten(bg-color, 5%) !important
+				input[type="email"]
+					color  rgba(text-color, .87) !important
+					border-color lighten(lighten(bg-color, 4%), 7%) !important
+					background-color lighten(bg-color, 4%) !important
+					&::-webkit-input-placeholder,
+					&::placeholder
+						color rgba(text-color, .6)
 
 @-moz-document regexp("https:\/\/matters\.news\/@.+\/((?!comments|followe[re]s).+)")
 	// 自創佈局
@@ -840,14 +846,14 @@ red-color = #b00020
 					z-index 150 !important
 					transform translateX(40%) !important
 					transition opacity .25s, transform .25s
+					background-color #fff
+					border-left 1px solid rgba(#000, .08) !important
 					// 暗黑模式
 					// Dark Mode
 					if darkModeLook > 0
-						background-color bg-color
-						border-left 1px solid rgba(text-color, .08) !important
-					else
-						background-color #fff
-						border-left 1px solid rgba(#000, .08) !important
+						@media darkModeQuery
+							background-color bg-color
+							border-left 1px solid rgba(text-color, .08) !important
 					& > *
 						width 14rem
 						flex-basis 14rem
