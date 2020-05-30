@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.4.0-dev+001
+@version		0.4.0-dev+002
 @description	A simple user css for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -765,12 +765,12 @@ red-color = #b00020
 						stroke rgba(text-color, .87) !important
 
 @-moz-document url("https://matters.news/help")
-	if darkModeLook
+	if darkModeLook > 0
 		article ul li + li
 			border-top-color bg-color !important
 
 @-moz-document regexp("https:\/\/matters\.news\/about\/?")
-	if darkModeLook
+	if darkModeLook > 0
 		.features
 			background second-color-dark !important
 			.feature-section
@@ -783,7 +783,7 @@ red-color = #b00020
 				background linear-gradient( 90deg, second-color-dark 50%, transparent 50% ) no-repeat !important
 				
 @-moz-document regexp("https:\/\/matters\.news\/migration\/?")
-	if darkModeLook
+	if darkModeLook > 0
 		#steps .step img
 			filter invert(92.9%) hue-rotate(185deg) saturate(125%)
 		.intro-wrap, .banner
@@ -793,7 +793,7 @@ red-color = #b00020
 				color primary-color-light !important
 
 @-moz-document regexp("https:\/\/matters\.news\/(about|migration)\/?")
-	if darkModeLook
+	if darkModeLook > 0
 		.intro-wrap, .slogan, .banner
 			background-color primary-color-dark !important
 				
@@ -842,7 +842,7 @@ red-color = #b00020
 					transition opacity .25s, transform .25s
 					// 暗黑模式
 					// Dark Mode
-					if darkModeLook
+					if darkModeLook > 0
 						background-color bg-color
 						border-left 1px solid rgba(text-color, .08) !important
 					else
