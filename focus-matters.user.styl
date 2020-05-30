@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.4.0-dev+005
+@version		0.4.0-dev+006
 @description	A simple user style for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -151,7 +151,7 @@ if darkModeLook == 2
 						opacity 1
 						transform translateX(0)
 						transition opacity .25s, transform .3s
-						transition-time-function cubic-bezier(0.4, 0, 1, 1)
+						transition-timing-function cubic-bezier(0.4, 0, 1, 1)
 
 		// 修復自創佈局中的卡片層級
 		// Fix z-index of poped cards when searching
@@ -815,7 +815,7 @@ if darkModeLook == 2
 					&::placeholder
 						color rgba(text-color, .6)
 
-@-moz-document regexp("https:\/\/matters\.news\/\@.+\/((?!comments|followe[re]s).+)")
+@-moz-document regexp("https:\/\/matters\.news\/@.+\/((?!comments|followe[re]s).+)")
 	// 自創佈局
 	// Focus Matters style
 	if layoutChange == focusMatters
@@ -826,11 +826,11 @@ if darkModeLook == 2
 				& > aside, & > nav
 					opacity 0
 					transition opacity .25s
-					transition-time-function cubic-bezier(.4, 0, 1, 1)
+					transition-timing-function cubic-bezier(.4, 0, 1, 1)
 					&:hover, &:focus-within
 						opacity 1
 						transition opacity .3s
-						transition-time-function cubic-bezier(0, 0, .2, 1)
+						transition-timing-function cubic-bezier(0, 0, .2, 1)
 				// 內縮右移側邊欄
 				// Hide aside in the right
 				& > aside
