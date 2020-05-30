@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.4.0-dev+004
+@version		0.4.0-dev+005
 @description	A simple user style for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -34,7 +34,6 @@ second-color-light = #f4d59a
 second-color-dark = #8e753f
 second-color-text = #000
 red-color = #b00020
-
 
 if darkModeLook == 1
 	darkModeQuery = "screen"
@@ -453,13 +452,11 @@ if darkModeLook == 2
 						background-color bg-color !important
 
 			aside
-				border-left-color rgba(text-color, .08) !important
-				border-right-color rgba(text-color, .08) !important
+				border-color rgba(text-color, .08) !important
 
 			@media (min-width: 1280px)
 				aside
-					border-left medium none !important
-					border-right medium none !important
+					border none !important
 
 			.nav-bar,
 			.toolbar,
@@ -818,7 +815,7 @@ if darkModeLook == 2
 					&::placeholder
 						color rgba(text-color, .6)
 
-@-moz-document regexp("https:\/\/matters\.news\/@.+\/((?!comments|followe[re]s).+)")
+@-moz-document regexp("https:\/\/matters\.news\/\@.+\/((?!comments|followe[re]s).+)")
 	// 自創佈局
 	// Focus Matters style
 	if layoutChange == focusMatters
@@ -847,12 +844,12 @@ if darkModeLook == 2
 					transform translateX(40%) !important
 					transition opacity .25s, transform .25s
 					background-color #fff
-					border-left 1px solid rgba(#000, .08) !important
+					border-left 1px solid rgba(#000, .08)
 					// 暗黑模式
 					// Dark Mode
 					if darkModeLook > 0
 						@media darkModeQuery
-							background-color bg-color
+							background-color bg-color !important
 							border-left 1px solid rgba(text-color, .08) !important
 					& > *
 						width 14rem
