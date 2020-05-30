@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters - 暗色模式 (跟隨系統)
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.4.0-dev+007
+@version		0.4.0-dev+008
 @description	A simple user style for Matters. This is one of the css in the pure css version set, which change Matters into dark theme when the system is in dark mode.
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -541,6 +541,12 @@
         }
         .error .image img[src$=".svg"][src^="/_next/static"] {
             mix-blend-mode: soft-light;
+        }
+        .splash-screen {
+            background-color: #121212 !important
+        }
+        .splash-screen .icon>path[fill="#121212"] {
+            fill: rgba(255, 255, 255, .87) !important
         }
         .slides li>.container {
             background-color: rgba(255, 255, 255, 0.04);
