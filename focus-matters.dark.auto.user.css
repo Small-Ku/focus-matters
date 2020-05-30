@@ -614,11 +614,10 @@
             filter: invert(90%) hue-rotate(180deg) brightness(110%);
         }
     }
-}
-
-@media screen and (prefers-color-scheme: dark) and (min-width: 768px) {
-    .features {
-        background: linear-gradient(90deg, #8e753f 50%, transparent 50%) no-repeat !important;
+    @media screen and (prefers-color-scheme: dark) and (min-width: 768px) {
+        .features {
+            background: linear-gradient(90deg, #8e753f 50%, transparent 50%) no-repeat !important;
+        }
     }
 }
 
