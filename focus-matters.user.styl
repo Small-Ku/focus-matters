@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.4.0-dev+009
+@version		0.4.0-dev+010
 @description	A simple user style for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -36,9 +36,13 @@ second-color-text = #000
 red-color = #b00020
 
 if darkModeLook == 1
-	darkModeQuery = "screen"
+	darkModeQuery = "(min-width: 0)"
 if darkModeLook == 2
-	darkModeQuery = "screen and (prefers-color-scheme: dark)"
+	darkModeQuery = "(prefers-color-scheme: dark)"
+
+dmq768  = darkModeQuery + ' and (min-width: 768px)'
+dmq1280 = darkModeQuery + ' and (min-width: 1280px)'
+dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 
 @-moz-document domain("matters.news")
 	// 視覺優化
@@ -444,19 +448,8 @@ if darkModeLook == 2
 				&.hasNoBorder
 					border medium none !important
 
-			@media (min-width: 768px)
-				article
-					border-left-color rgba(text-color, .08) !important
-					border-right-color rgba(text-color, .08) !important
-					&.bg-grey-lighter
-						background-color bg-color !important
-
 			aside
 				border-color rgba(text-color, .08) !important
-
-			@media (min-width: 1280px)
-				aside
-					border none !important
 
 			.nav-bar,
 			.toolbar,
@@ -542,13 +535,7 @@ if darkModeLook == 2
 				border-color primary-color-light !important
 				color primary-color-light !important
 				.count
-					color rgba(text-color, .87) !important
-			
-			@media (min-width: 768px)
-				.appreciate-button.clap
-					&:hover, &:focus
-						background-color lighten(bg-color, 4%) !important
-					
+					color rgba(text-color, .87) !important					
 
 			.received-count
 				color rgba(text-color, .6) !important
@@ -755,18 +742,32 @@ if darkModeLook == 2
 				
 			body
 				overflow-x hidden
-			
-			@media (min-width: 768px)
-				body
-					overflow-x auto
 
-			@media (pointer: coarse)
-				.ql-bubble .ql-toolbar .ql-bubble .ql-toolbar button:hover:not(.ql-active)
-					color rgba(text-color, .87) !important
-					.ql-fill, .ql-stroke.ql-fill
-						fill rgba(text-color, .87) !important
-					.ql-stroke, .ql-stroke-miter
-						stroke rgba(text-color, .87) !important
+		@media dmq768
+			article
+				border-left-color rgba(text-color, .08) !important
+				border-right-color rgba(text-color, .08) !important
+				&.bg-grey-lighter
+					background-color bg-color !important
+					
+			.appreciate-button.clap
+				&:hover, &:focus
+					background-color lighten(bg-color, 4%) !important
+					
+			body
+				overflow-x auto
+
+		@media dmq1280
+			aside
+				border none !important
+
+		@media dmqpc
+			.ql-bubble .ql-toolbar .ql-bubble .ql-toolbar button:hover:not(.ql-active)
+				color rgba(text-color, .87) !important
+				.ql-fill, .ql-stroke.ql-fill
+					fill rgba(text-color, .87) !important
+				.ql-stroke, .ql-stroke-miter
+					stroke rgba(text-color, .87) !important
 
 @-moz-document url("https://matters.news/help")
 	if darkModeLook > 0
@@ -784,9 +785,9 @@ if darkModeLook == 2
 						color second-color-light !important
 					img
 						filter invert(90%) hue-rotate(180deg) brightness(110%)
-			@media (min-width: 768px)
-				.features
-					background linear-gradient( 90deg, second-color-dark 50%, transparent 50% ) no-repeat !important
+		@media dmq768
+			.features
+				background linear-gradient( 90deg, second-color-dark 50%, transparent 50% ) no-repeat !important
 				
 @-moz-document regexp("https:\/\/matters\.news\/migration\/?")
 	if darkModeLook > 0
@@ -850,12 +851,6 @@ if darkModeLook == 2
 					transition opacity .25s, transform .25s
 					background-color #fff
 					border-left 1px solid rgba(#000, .08)
-					// 暗黑模式
-					// Dark Mode
-					if darkModeLook > 0
-						@media darkModeQuery
-							background-color bg-color !important
-							border-left 1px solid rgba(text-color, .08) !important
 					& > *
 						width 14rem
 						flex-basis 14rem
@@ -867,3 +862,10 @@ if darkModeLook == 2
 				& > article
 					max-width calc(100% - 20rem) !important
 					flex-basis calc(100% - 20rem) !important
+	// 暗黑模式
+	// Dark Mode
+	if layoutChange == focusMatters && darkModeLook > 0
+		@media dmq1280
+			#__next > main > aside
+				background-color bg-color !important
+				border-left 1px solid rgba(text-color, .08) !important
