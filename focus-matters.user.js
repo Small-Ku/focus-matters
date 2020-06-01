@@ -3,7 +3,7 @@
 // @namespace     https://github.com/Small-Ku/focus-matters
 // @description   A simple user style for Matters. This is a javascript loader for its pure CSS version.
 // @include       https://matters.news/*
-// @version       0.4.0-dev+015
+// @version       0.4.0-dev+016
 // ==/UserScript==
 
 var options = {
@@ -38,13 +38,13 @@ if (typeof styles === 'undefined') {
     }
     //	依據選項啟用/關閉 <style> 標籤
     updateStyles();
-})()
+})();
 
 //	如果頁面網址改變
 window.addEventListener('locationchange', function(){
     //	依據選項啟用/關閉 <style> 標籤
     updateStyles();
-})
+});
 
 /*	新增頁面網址改變的 EventListener
     來源: https://stackoverflow.com/questions/6390341/how-to-detect-if-url-has-changed-after-hash-in-javascript */
@@ -64,7 +64,7 @@ history.replaceState = ( f => function replaceState(){
 })(history.replaceState);
 
 window.addEventListener('popstate',()=>{
-    window.dispatchEvent(new Event('locationchange'))
+    window.dispatchEvent(new Event('locationchange'));
 });
 
 //	EventListener 借用部分結束
@@ -88,17 +88,20 @@ async function checkStyle(styles, dis = false) {
             switch (styles["matches"][i]) {
                 case "domain":
                     rec = (styles["urls"][i] == window.location.hostname);
+                    break;
                 case "url":
                     rec = (styles["urls"][i] == window.location.hostname);
+                    break;
                 case "url-prefix":
                     rec = RegExp("^" + styles["urls"][i]).test(window.location.href);
+                    break;
                 case "regexp":
                     rec = RegExp(styles["urls"][i]).test(window.location.href);
             }
         }
         /*	根據上面的判斷開關 <style> 標籤
             如果 dis 傳入為 true，直接關閉標籤*/
-        if (!dis && rec) {enableStyles(styles["styles"][i])} else {disableStyles(styles["styles"][i])};
+        if (!dis && rec) {enableStyles(styles["styles"][i]);} else {disableStyles(styles["styles"][i]);}
     }
 }
 
@@ -159,7 +162,7 @@ async function addStyles(url) {
         if(moz = lines[line].match(/@-moz-document (\w+)\("(.+)"\)/)) { // 遇到有網址匹配的行數時
             storage["matches"].push(moz[1]); // 記錄匹配方式
             storage["urls"].push(moz[2]); // 記錄匹配參數
-        } else if (moz = lines[line].match(/^}$/)) { // 遇到行的內容只有 } 時
+        } else if (lines[line].match(/^}$/)) { // 遇到行的內容只有 } 時
             document.body.insertAdjacentHTML('beforeend', '<style>' + temp + '</style>'); // 插入 <style> 標籤
             storage["styles"].push(document.body.lastElementChild); // 記錄該標籤以便開關
             disableStyles(document.body.lastElementChild); // 先關閉該標籤，以免頁面閃爍
@@ -169,4 +172,4 @@ async function addStyles(url) {
         }
     }
     return storage; // 記錄有關資料以便開關
-};
+}
