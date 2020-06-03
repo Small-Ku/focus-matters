@@ -3,7 +3,7 @@
 // @namespace     https://github.com/Small-Ku/focus-matters
 // @description   A simple user style for Matters. This is a javascript loader for its pure CSS version.
 // @include       https://matters.news/*
-// @version       0.4.0-dev+016
+// @version       0.4.0-dev+017
 // ==/UserScript==
 
 var options = {
@@ -90,7 +90,7 @@ async function checkStyle(styles, dis = false) {
                     rec = (styles["urls"][i] == window.location.hostname);
                     break;
                 case "url":
-                    rec = (styles["urls"][i] == window.location.hostname);
+                    rec = (styles["urls"][i] == (window.location.protocol + '//' + window.location.hostname+ window.location.pathname));
                     break;
                 case "url-prefix":
                     rec = RegExp("^" + styles["urls"][i]).test(window.location.href);
