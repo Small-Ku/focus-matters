@@ -3,7 +3,7 @@
 // @namespace     https://github.com/Small-Ku/focus-matters
 // @description   A simple user style for Matters. This is a javascript loader for its pure CSS version.
 // @include       https://matters.news/*
-// @version       0.4.0-dev+020
+// @version       0.4.0-dev+021
 // ==/UserScript==
 
 var options = {
@@ -172,4 +172,9 @@ async function addStyles(url) {
         }
     }
     return storage; // 記錄有關資料以便開關
+}
+
+//  如果是在 iOS 的捷徑下運行，則運行 completion 以符合捷徑的要求
+if (typeof completion !== 'undefined') {
+    completion();
 }
