@@ -3,7 +3,7 @@
 // @namespace     https://github.com/Small-Ku/focus-matters
 // @description   A simple user style for Matters. This is a javascript loader for its pure CSS version.
 // @include       https://matters.news/*
-// @version       0.4.0-dev+017
+// @version       0.4.0-dev+020
 // ==/UserScript==
 
 var options = {
@@ -33,7 +33,7 @@ if (typeof styles === 'undefined') {
     for (var key in styles) {
         /*	如 styles 剛初始化 (裡面沒東西)，載入相應的文件*/
         if (Object.keys(styles[key]).length === 0 && styles[key].constructor === Object) {
-            styles[key] = await addStyles("https://raw.githubusercontent.com/Small-Ku/focus-matters/dev/focus-matters."+key+".user.css");
+            styles[key] = await addStyles("https://raw.githubusercontent.com/Small-Ku/focus-matters/master/focus-matters."+key+".user.css");
         }
     }
     //	依據選項啟用/關閉 <style> 標籤
