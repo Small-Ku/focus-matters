@@ -21,7 +21,9 @@ Focus Matters 是志在改善 [Matters](https://matters.news/) 的使用者樣�
 ## 使用
 
 安裝後，如下圖所示點開 Stylus 的圖示，點擊 Focus Matters 的齒輪按鈕進入選項，
-![選項演示](https://i.imgur.com/cTjZDQJ.gifv)
+
+![選項演示](https://i.imgur.com/cTjZDQJ.gif)
+
 並按需開關或選擇：
 
 - 擴大內容：
@@ -35,7 +37,8 @@ Focus Matters 是志在改善 [Matters](https://matters.news/) 的使用者樣�
 而置於右側喚出側邊欄。
 
 如下圖所示：
-![內容頁截圖](https://i.imgur.com/6IHWtiV.gifv)
+
+![內容頁截圖](https://i.imgur.com/6IHWtiV.gif)
 
 ## 規劃
 
