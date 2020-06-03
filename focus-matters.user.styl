@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.4.0-dev+014
+@version		0.4.0-dev+018
 @description	A simple user style for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -73,14 +73,21 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 		.search-tag-input
 			transform translateY(.06rem) !important
 			
-		// 優化標籤列 Scrollbar 的外觀
-		// Optimize apperance of scrollbar in tag list (CSS Scrollbars Level 1 Working Draft)
-		.tag-list ul
+		// 優化標籤列的 Scrollbar 與標籤間距
+		// Optimize the scrollbar and tags in tag list (CSS Scrollbars Level 1 Working Draft)
+		.tag-list > ul
 			scrollbar-width thin
-			scrollbar-color rgba(0,0,0,.08) rgba(0,0,0,0)
+			scrollbar-color rgba(0,0,0,0) rgba(0,0,0,.0)
+			transition scrollbar-color .2s cubic-bezier(.4, 0, .2, 1)
+			&:hover
+				scrollbar-color rgba(0,0,0,.05) rgba(0,0,0,.02)
+			> li
+				margin-right .5rem!important
 			if darkModeLook > 0
 				@media darkModeQuery
-					scrollbar-color rgba(text-color,.08) rgba(0,0,0,0)
+					scrollbar-color rgba(text-color,0) rgba(text-color,.0)
+					&:hover
+						scrollbar-color rgba(text-color,.08) rgba(text-color,.02)
 
 		// 隱藏編輯器中 hr 元素的光標
 		// Hide caret of hr element that with contenteditable 
