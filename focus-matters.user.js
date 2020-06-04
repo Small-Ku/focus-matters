@@ -3,7 +3,7 @@
 // @namespace     https://github.com/Small-Ku/focus-matters
 // @description   A simple user style for Matters. This is a javascript loader for its pure CSS version.
 // @include       https://matters.news/*
-// @version       0.4.0-dev+022
+// @version       0.4.0
 // ==/UserScript==
 
 var options = {
