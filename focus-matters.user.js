@@ -3,7 +3,7 @@
 // @namespace     https://github.com/Small-Ku/focus-matters
 // @description   A simple user style for Matters. This is a javascript loader for its pure CSS version.
 // @include       https://matters.news/*
-// @version       0.4.0-dev+021
+// @version       0.4.0-dev+022
 // ==/UserScript==
 
 var options = {
@@ -12,7 +12,7 @@ var options = {
     "layout": "off",
 /*	暗色模式
         選項: "on": 開啓, "auto": 跟隨系統, "off": 關閉 */
-    "darkMode": "on",
+    "darkMode": "auto",
 /*	視覺優化
         選項: "on": 開啓, "off": 關閉 */
     "optimize": "on"
