@@ -390,7 +390,7 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 				&:hover, &:active, &:focus
 					color lighten(primary-color, 4%)
 
-				// Tooltop pop-up
+				// Tooltip pop-up
 			.tippy-tooltip
 				&, &.dropdown-theme, &.tooltip-theme
 					color rgba(text-color, .87) !important
@@ -407,6 +407,11 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 				&[data-placement^="right"]
 					.tippy-arrow
 						border-right-color rgba(text-color, .87)
+
+				// Dropdown
+			.tippy-box[data-theme="dropdown"]
+				color rgba(text-color, .87) !important
+				background-color lighten(bg-color, 5%) !important
 
 			.unread-icon
 				&::after
