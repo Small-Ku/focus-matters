@@ -174,5 +174,3 @@ iOS 安裝可能會過於複雜，使用者亦可在 [Matters 的文章內](http
 ## 授權
 
 [MIT](https://opensource.org/licenses/MIT)
-
-[i1]: https://github.com/Samll_Ku/focus-matters/issues/1
