@@ -119,8 +119,13 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 					content ""
 					background-color rgb(13, 103, 99)
 					transform translateX(-2.3rem)
+					will-change transform
 					border-radius .75rem
 				&:after
+					left auto!important
+					right auto!important
+					transform translateX(0.125rem)
+					will-change transform
 					z-index 1
 			&:checked + span
 				box-shadow none!important
@@ -128,9 +133,7 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 					opacity 1
 					transform translateX(0)
 				&:after 
-					left auto !important
-					right auto !important
-					transform translateX(1.125rem) !important
+					transform translateX(1.125rem)
 
 	// 擴大內容
 	// Extend content in the web layout
