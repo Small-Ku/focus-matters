@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.4.4
+@version		0.4.5
 @description	A simple user style for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -106,6 +106,7 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 				overflow hidden
 				&:before, &:after
 					transition transform .1s cubic-bezier(.4, 0, .2, 1)!important
+					will-change transform
 				&:before
 					display block
 					position absolute
@@ -119,13 +120,11 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 					content ""
 					background-color rgb(13, 103, 99)
 					transform translateX(-2.3rem)
-					will-change transform
 					border-radius .75rem
 				&:after
 					left auto!important
 					right auto!important
 					transform translateX(0.125rem)
-					will-change transform
 					z-index 1
 			&:checked + span
 				box-shadow none!important
