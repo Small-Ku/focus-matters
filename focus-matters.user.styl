@@ -170,6 +170,9 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 						max-width 12rem
 						flex-basis 12rem
 						padding-right 1rem !important
+						& input[type="search"]::placeholder
+							font-size 0.75rem
+							line-height 2rem
 					& > aside, & > nav
 						opacity 1
 						transform translateX(0)
@@ -884,6 +887,7 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 				& > article
 					max-width calc(100% - 20rem) !important
 					flex-basis calc(100% - 20rem) !important
+					
 	// 暗黑模式
 	// Dark Mode
 	if layoutChange == focusMatters && darkModeLook > 0
