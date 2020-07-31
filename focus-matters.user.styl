@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.4.5
+@version		0.4.6
 @description	A simple user style for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -170,6 +170,9 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 						max-width 12rem
 						flex-basis 12rem
 						padding-right 1rem !important
+						& input[type="search"]::placeholder
+							font-size 0.75rem
+							line-height 2rem
 					& > aside, & > nav
 						opacity 1
 						transform translateX(0)
@@ -477,8 +480,9 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 
 			.nav-bar,
 			.toolbar,
-			.topbar
-				border-top-color rgba(text-color, .08) !important
+			.topbar,
+			nav.sticky
+				border-bottom-color rgba(text-color, .08) !important
 				background-color bg-color !important
 
 			.toolbar-items, .toolbar-toggle-button
@@ -884,6 +888,7 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 				& > article
 					max-width calc(100% - 20rem) !important
 					flex-basis calc(100% - 20rem) !important
+					
 	// 暗黑模式
 	// Dark Mode
 	if layoutChange == focusMatters && darkModeLook > 0
