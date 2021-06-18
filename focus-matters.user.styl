@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.4.6
+@version		0.4.7
 @description	A simple user style for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -52,16 +52,42 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 		// Optimize padding of round text elements with icon
 		.tag.inline
 			padding 0 .5rem 0 .35rem!important
-		aside .hasNoBorder .title .right 
-			.icon
-				margin-left -.12rem !important
-			.text ~ .icon
-				margin-left 0 !important
-				margin-right -.24rem !important
-		.side-nav .hasIcon.text-right .text
-			padding 0 .1rem 0 .6rem!important
-		.side-nav .hasIcon.text-right.white .text
-			padding 0 0 0 .5rem!important
+		button.container>.content
+			>.text-icon
+				>.icon
+					margin-left -.12rem !important
+		aside > .container
+			> .hasNoBorder .title .right 
+				.icon
+					margin-left -.12rem !important
+				.text ~ .icon
+					margin-left 0 !important
+					margin-right -.24rem !important
+			> .list > .list-item > .card
+				> .tag
+					margin-top .05rem
+					+ .content
+						margin-top .25rem
+						> .cover
+							margin-top .125rem
+				> .container
+					> .avatar
+						margin-left -.125rem
+					> .content
+						margin-left .125rem
+						> .description
+							transform translateY(-.25rem)
+					> .extra-button
+						margin-right -.0625rem
+						.hotarea
+							height 1.25rem !important
+							margin .125rem 0 !important
+		.side-nav 
+			.hasIcon.text-right
+				.text
+					padding 0 .1rem 0 .6rem!important
+				&.white .text
+					padding 0 0 0 .5rem!important
 
 		// 優化標籤的視覺平衡與統一
 		// Optimize visual balances and consistency of tags
@@ -98,6 +124,12 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 		// Hide overflow when editor have image inside
 		.ql-editor
 			overflow-x hidden
+			
+		// 讓總結不要黏着邊框
+		// Let u-summary apart from the border
+		.content .u-summary
+			margin-left calc(1rem - 5px)
+			padding-left .25rem
 		
 		// 爲開關按鈕換更好的動畫
 		// Optimize switch with transform instead of box-shadow and left/right
@@ -138,46 +170,31 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 	// Extend content in the web layout
 	if layoutChange != off
 		@media (min-width: 1280px)
-			#__next > main
-				-webkit-flex-basis 100%
-				-ms-flex-preferred-size 100%
-				flex-basis 100%
-				max-width 100%
+			#__next > .l-container
 				// 模仿原版佈局
 				// Mock original layout
 				if layoutChange == mockOriginal
-					& > article
-						max-width calc(100% - 592px) !important
-						flex-basis calc(100% - 592px) !important
-					& > nav
-						max-width 168px !important
-						margin-left 36px !important
-					& > aside
-						max-width 272px !important
-						margin-right 36px !important
-				// 自創佈局
-				// Focus Matters style
+					grid-template-columns 36px minmax( 0, 1fr ) 36px
 				if layoutChange == focusMatters
-					& > article
-						max-width calc(100% - 25rem) !important
-						flex-basis calc(100% - 25rem) !important
-						padding 0 !important
-						margin-right 2rem !important
-					& > nav
-						max-width 8rem
-						margin 0 0 0 2rem
-					& > aside
-						max-width 12rem
-						flex-basis 12rem
-						padding-right 1rem !important
-						& input[type="search"]::placeholder
-							font-size 0.75rem
-							line-height 2rem
-					& > aside, & > nav
-						opacity 1
-						transform translateX(0)
-						transition opacity .25s, transform .3s
-						transition-timing-function cubic-bezier(0.4, 0, 1, 1)
+					grid-template-columns 2rem minmax( 0, 1fr ) 2rem
+				> main
+					// 自創佈局
+					// Focus Matters style
+					if layoutChange == focusMatters
+						& > article
+							grid-column col-start 2 / span 9
+						& > nav
+							grid-column col-start 1 / span 1
+						& > aside
+							grid-column col-start 11 / span 2
+							& input[type="search"]::placeholder
+								font-size 0.75rem
+								line-height 2rem
+						& > aside, & > nav
+							opacity 1
+							transform translateX(0)
+							transition opacity .25s, transform .3s
+							transition-timing-function cubic-bezier(0.4, 0, 1, 1)
 
 		// 修復自創佈局中的卡片層級
 		// Fix z-index of poped cards when searching
@@ -414,6 +431,14 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 					.tippy-arrow
 						border-right-color rgba(text-color, .87)
 
+				// Dialog
+			.dialog
+				color rgba(text-color, .87) !important
+				.overlay
+					background-color rgba(text-color, .25) !important
+				[role=dialog] > * > .container
+					background-color lighten(bg-color, 5%) !important
+				
 				// Dropdown
 			.tippy-box[data-theme="dropdown"]
 				color rgba(text-color, .87) !important
@@ -498,6 +523,12 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 					color rgba(text-color, .12) !important
 
 			// Misc
+			
+			main > article > [data-ptr="true"] > .info > .container
+				background-color lighten(bg-color, 4%)
+			
+			.support-widget .donation
+				background-color darken(second-color, 25%) !important
 
 			.inactive-state
 				color bg-color
@@ -631,6 +662,11 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 
 			.content.inactive
 				color rgba(text-color, .6) !important
+
+			.content .u-summary
+				color rgba(text-color, 1) !important
+				&::before
+					filter brightness(0.5)
 
 			.descendants
 				li
@@ -804,22 +840,31 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 @-moz-document regexp("https:\/\/matters\.news\/about\/?")
 	if darkModeLook > 0
 		@media darkModeQuery
-			.features
-				background second-color-dark !important
-				.feature-section
+			.reports.is-draggable
+				li > a[href]
+					background-color lighten(bg-color, 4%) !important
+			.ilusCity
+				filter saturate(200%) brightness(1.5)
+			.team, .intro
+				.l-container
 					.intro p
 						color second-color-light !important
-					img
+					&:not(.community) img
 						filter invert(90%) hue-rotate(180deg) brightness(110%)
-		@media dmq768
-			.features
-				background linear-gradient( 90deg, second-color-dark 50%, transparent 50% ) no-repeat !important
+					&.feature
+						background-color primary-color-dark !important
 				
 @-moz-document regexp("https:\/\/matters\.news\/migration\/?")
 	if darkModeLook > 0
 		@media darkModeQuery
-			#steps .step img
-				filter invert(92.9%) hue-rotate(185deg) saturate(125%)
+			.intro
+				background-blend-mode multiply
+				background-color primary-color-dark !important
+			#steps .step
+				>img
+					filter invert(92.9%) hue-rotate(185deg) saturate(125%)
+				>.avatar
+					background-color lighten(bg-color, 4%) !important
 			.intro-wrap, .banner
 				color rgba(text-color, .87)
 				background-blend-mode multiply
@@ -829,7 +874,7 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 @-moz-document regexp("https:\/\/matters\.news\/(about|migration)\/?")
 	if darkModeLook > 0
 		@media darkModeQuery
-			.intro-wrap, .slogan, .banner
+			.intro-wrap, .banner
 				background-color primary-color-dark !important
 					
 			.reports .item a
@@ -852,11 +897,11 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 	// Focus Matters style
 	if layoutChange == focusMatters
 		@media (min-width: 1280px)
-			#__next > main
+			#__next > .l-container > main
 				// 隱藏導航欄與側邊欄，滑鼠置於空白位置時浮現
 				// Hide nav and aside with revealing with hover
 				& > aside, & > nav
-					opacity 0
+					opacity .1
 					transition opacity .25s
 					transition-timing-function cubic-bezier(.4, 0, 1, 1)
 					&:hover, &:focus-within
@@ -866,33 +911,33 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 				// 內縮右移側邊欄
 				// Hide aside in the right
 				& > aside
-					max-width 16rem
-					flex-basis 16rem
 					position fixed
 					right 0
 					padding 2rem 1rem
 					height 100%
 					z-index 150 !important
-					transform translateX(40%) !important
+					transform translateX(calc(100% - 10rem)) !important
 					transition opacity .25s, transform .25s
 					background-color #fff
-					border-left 1px solid rgba(#000, .08)
+					overflow-y auto
+					box-sizing content-box
 					& > *
-						width 14rem
-						flex-basis 14rem
+						width 20rem
+						flex-basis 20rem
 					&:hover, &:focus-within
 						transform translateX(0) !important
 						transition opacity .3s, transform .3s
+						border-left 1px solid rgba(#000, .08)
 				// 擴大內容區域
 				// Extend content area more
 				& > article
-					max-width calc(100% - 20rem) !important
-					flex-basis calc(100% - 20rem) !important
+					grid-column col-start 2/span 10
 					
 	// 暗黑模式
 	// Dark Mode
 	if layoutChange == focusMatters && darkModeLook > 0
 		@media dmq1280
-			#__next > main > aside
+			#__next > .l-container > main > aside
 				background-color bg-color !important
-				border-left 1px solid rgba(text-color, .08) !important
+				&:hover, &:focus-within
+					border-left 1px solid rgba(text-color, .08) !important
