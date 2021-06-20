@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name			Focus matters
 @namespace		https://github.com/Small-Ku/focus-matters
-@version		0.4.7
+@version		0.4.8
 @description	A simple user style for Matters
 @author			Small-Ku <small_ku@outlook.com> (https://github.com/Small-Ku)
 @license		MIT
@@ -523,6 +523,13 @@ dmqpc   = darkModeQuery + ' and (pointer: coarse)'
 					color rgba(text-color, .12) !important
 
 			// Misc
+			
+			.fixed-main .container[style^="background-image:"]
+				background-color lighten(bg-color, 6%) !important
+				background-blend-mode color
+				filter saturate(2)
+				button
+					filter saturate(.5)
 			
 			main > article > [data-ptr="true"] > .info > .container
 				background-color lighten(bg-color, 4%)
